@@ -1,18 +1,9 @@
-import { useState } from 'react'
-import NavBar from './components/NavBar'
-import Intro from './components/Intro';
-import Templates from './components/Templates';
+import Home from './pages/Home';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
+return (
     <div className="w-full flex">
-      <NavBar />
-      <div className="w-full">
-        <Intro />
-        <Templates />
-      </div>
+     
     </div>
   )
 }
