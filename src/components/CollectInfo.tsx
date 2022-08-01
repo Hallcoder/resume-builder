@@ -2,8 +2,8 @@ import React from 'react';
 import Section from './Section';
 
 const CollectInfo:React.FC = ()  => {
- return <div className="flex flex-col w-6/12">
-    <form action="" className='h-full ml-4'>
+ return <div className="h-5/6 flex overflow-y-scroll flex-col w-6/12">
+    <form action="" className='h-5/6 ml-4 mr-2'>
         <Section title={'Personal Details'} />
         <Section title={'Bio'} />
         <Section title={'Skills'} />

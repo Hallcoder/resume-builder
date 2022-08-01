@@ -3,6 +3,6 @@
 @tailwind utilities;
 @layer utilities{
     ::-webkit-scrollbar{
-        display:none;
+        display:;
     }
 }

@@ -1,15 +1,15 @@
 import React from "react";
 import CollectInfo from "../components/CollectInfo";
+import Preview from "../components/Preview";
 import ResNavBar from "../components/ResNavBar";
 
 const Resume: React.FC = () => {
   return (
-    <div>
+    <div className="h-screen">
       <ResNavBar />
-      <div className="flex w-full mt-[2vh]">
+      <div className="flex w-full h-full mt-[2vh]">
         <CollectInfo />
-        <div className="w-5/12">
-      </div>
+        <Preview />
       </div>
      
     </div>
