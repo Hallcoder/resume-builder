@@ -7,7 +7,7 @@ const Resume: React.FC = () => {
   return (
     <div className="h-screen">
       <ResNavBar />
-      <div className="flex w-full h-full mt-[2vh]">
+      <div className="flex w-full h-full mt-[9vh]">
         <CollectInfo />
         <Preview />
       </div>

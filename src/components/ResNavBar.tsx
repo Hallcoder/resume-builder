@@ -4,10 +4,10 @@ import {BiRedo,BiUndo} from 'react-icons/bi';
 import {TbArrowBarUp,TbArrowBarToDown} from 'react-icons/tb'
 const ResNavBar: React.FC = () => {
   return (
-    <div className="flex justify-between items-center h-[8vh] bg-black">
-      <div className='flex items-center h-4/6 w-1/12 border rounded-md border-white'> 
+    <div className="flex fixed z-[1] w-full top-0 justify-between items-center h-[8vh] bg-black">
+      <div className='flex m-2 items-center h-4/6 w-1/12 border rounded-md border-white'> 
         <MdOutlineKeyboardBackspace className='text-white text-3xl'/>
-        <span className='text-white text-center inline-block w-full rounded-md'>Resumes</span>
+        <span className='text-white  text-center inline-block w-full rounded-md'>Resumes</span>
       </div>
       <div className='w-3/12 flex justify-center items-center h-full'>
         <p className='text-white text-center'>Resume {}</p>

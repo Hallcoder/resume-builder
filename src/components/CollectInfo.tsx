@@ -11,6 +11,7 @@ const CollectInfo:React.FC = ()  => {
         <Section title={'Employment'} />
         <Section title={'Languages'} />
         <Section title={'Languages'} />
+        <Section title={'Languages'} />
     </form>
  </div>
 }
