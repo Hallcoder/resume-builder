@@ -4,6 +4,8 @@ import {MdKeyboardArrowDown} from 'react-icons/md'
 import PersonDetails from './Sections/PersonalDetails';
 import Bio from './Sections/Bio';
 import Skills from './Sections/Skills';
+import Education from './Sections/Education';
+import Employment from './Sections/Employment';
 
 interface Props{
 title:string,
@@ -29,7 +31,7 @@ const Section:React.FC<Props> = ({title,RealSection}) => {
                setClassAccording('w-full h-[70vh]')
           break;
           default:
-               setClassAccording('w-full h-[40vh]')
+               setClassAccording('w-full h-[80vh] min-h-fit')
      }
    },[])
 return <div className="flex w-full flex-col justify-between  min-h-fit  border-b-2 items-center">
@@ -44,6 +46,8 @@ return <div className="flex w-full flex-col justify-between  min-h-fit  border-b
      {RealSection && RealSection === 'PD' && <PersonDetails />}
      {RealSection && RealSection === 'BIO' && <Bio />}
      {RealSection && RealSection === 'SKILL' && <Skills />}
+     {RealSection && RealSection === 'EDU' && <Education />}
+     {RealSection && RealSection === 'EMP' && <Employment />}
      </div>
 </div>
 }
