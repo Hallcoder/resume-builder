@@ -6,11 +6,11 @@ const Skills: React.FC = () => {
   let [styles, setStyles] = useState<{display: string}>({ display:'none' });
   const handleDisplayForm = () => {
    console.log('show form');
-    (addRef.current!as HTMLElement).style.display = 'none';
+    (addRef.current!as HTMLDivElement).style.display = 'none';
    styles.display === 'none' ? setStyles({display:'flex'}): setStyles({display:'none'})
    return
   };
-  const addRef = useRef()
+  const addRef = useRef<HTMLDivElement>(null)
   return (
     <div className="w-full h-full min-h-fit">
       <Block title="React Js(Frontend Development)" subtitle="Excellent" />
