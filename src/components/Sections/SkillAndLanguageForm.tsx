@@ -2,6 +2,7 @@ import { Slider } from '@mui/material';
 import React from 'react';
 import Input from '../common/Input';
 import {MdDeleteForever} from 'react-icons/md'
+import Done from '../Done';
 interface Props{
     name:string,
 }
@@ -17,10 +18,7 @@ const SkillAndLanguageForm:React.FC<Props> = ({name}) => {
             <Slider step={20}  />
         </div><span className="text-xs m-1">Make a choice</span> 
        </div>
-       <div className='w-11/12 flex justify-end items-center'>
-        <MdDeleteForever className="text-2xl"/>
-        <button className="h-8 bg-blue-700 w-1/12 text-white rounded-md m-1">Done</button>
-       </div>
+       <Done />
     </div>
 }
 export default SkillAndLanguageForm;

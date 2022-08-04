@@ -9,7 +9,7 @@ import {
 import { AiOutlineOrderedList } from "react-icons/ai";
 const Description: React.FC = () => {
   return (
-    <div className="flex flex-col border border-black m-auto w-11/12 h-[30vh] rounded-md">
+    <div className="flex flex-col border border-black m-auto w-11/12 h-4/6 rounded-md">
       <div className="h-5/6 border-b-2 border-gray-500">
         <textarea
           name="description"
