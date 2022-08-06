@@ -15,6 +15,8 @@ const Skills: React.FC = () => {
     <div className="w-full h-full min-h-fit">
       <Block title="React Js(Frontend Development)" subtitle="Excellent" />
       <Block title="Node Js(Backend Development)" subtitle="Excellent" />
+      <Block title="Node Js(Backend Development)" subtitle="Excellent" />
+      <Block title="Node Js(Backend Development)" subtitle="Excellent" />
       <Block title="Grid & Flexbox" subtitle="Excellent" />
       <div ref={addRef} className="w-2/12 flex border items-center mt-2 ml-6 h-10 rounded-md hover:bg-slate-100 border-gray-500 justify-around" onClick={handleDisplayForm}>
         <MdAdd onClick={handleDisplayForm} /> Add Skill

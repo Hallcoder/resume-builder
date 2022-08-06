@@ -17,7 +17,7 @@ const PersonDetails = () => {
     lRef: useRef<HTMLInputElement>(null),
   };
   return (
-    <div className="h-[40vh] w-full">
+    <div className=" h-fit w-full">
       <div className="flex h-3/6 w-full ">
         <img src="" alt="" className="h-full m-1 rounded-sm w-3/12 border" />
         <div className="flex flex-col h-full w-full items-center">

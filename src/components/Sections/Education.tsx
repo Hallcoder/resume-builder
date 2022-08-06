@@ -7,7 +7,6 @@ import { useState } from 'react';
 const Education:React.FC = () => {
     let [styles, setStyles] = useState<{display: string}>({ display:'none' });
   const handleDisplayForm = () => {
-   console.log('show form');
     (addRef.current!as HTMLDivElement).style.display = 'none';
    styles.display === 'none' ? setStyles({display:'flex'}): setStyles({display:'none'})
    return

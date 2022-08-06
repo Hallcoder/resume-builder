@@ -21,7 +21,11 @@ const Template1: React.FC = () => {
             </div>
         </header>
         <section className="flex w-full h-full">
-            <main className='h-full w-8/12'></main>
+            <main className='h-full w-8/12'>
+                <div></div>
+                <div></div>
+                <div></div>
+            </main>
             <aside className='h-full w-4/12 border-l-2 border'></aside>
         </section>
         <Overlap />

@@ -12,7 +12,7 @@ const Form: React.FC<Props> = ({ inputs }) => {
   const months = generate("months");
   const years = generate("years", 1965, 2008);
   return (
-    <div className="w-full h-[40vh] mt-2 border rounded-md border-black p-1 overflow-y-scroll text-sm">
+    <div className="w-full h-[40vh] mt-2 border rounded-md border-black p-1 min-h-fit h-fit text-sm">
       <div className="w-full h-[8vh]">
         <Input label={inputs[0]} className="w-full h-10 rounded-md border" />
       </div>

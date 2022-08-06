@@ -14,7 +14,7 @@ RealSection?:string;
 }
 const Section:React.FC<Props> = ({title,RealSection}) => {
      let [styles,setStyles] = useState({display:'none'});
-     let [classAccording,setClassAccording] = useState('w-full h-[70vh]');
+     let [classAccording,setClassAccording] = useState('w-full h-fit  min-h-fit');
      const handleDisplay = () => { 
           if(styles.display === 'none'){
                setStyles({display:'flex'});
@@ -25,13 +25,13 @@ const Section:React.FC<Props> = ({title,RealSection}) => {
    useEffect(()=>{
      switch(RealSection){
           case 'BIO':
-               setClassAccording('w-full h-[40vh]')
+               setClassAccording('w-full h-fit mih-h-fit')
           break;
           case 'PD':
-               setClassAccording('w-full h-[70vh]')
+               setClassAccording('w-full h-fit min-h-fit')
           break;
           default:
-               setClassAccording('w-full h-[80vh] min-h-fit')
+               setClassAccording('w-full h-fit  min-h-fit')
      }
    },[])
 return <div className="flex w-full flex-col justify-between  min-h-fit  border-b-2 items-center">
