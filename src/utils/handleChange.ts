@@ -1,6 +1,7 @@
 import {Dispatch, RefObject } from "react";
 import * as actions from '../redux/actionTypes'
 import createAction from "../redux/actionCreators";
+import { css } from "@emotion/react";
  const handleChange :(act: string,ref:RefObject<any>,dispatch:Dispatch<any>)=> void = (act,ref:RefObject<any>,dispatch) => {
     switch (act) {
    case "names":
@@ -21,6 +22,8 @@ import createAction from "../redux/actionCreators";
    case "phone":
     dispatch(createAction(actions.SET_PHONE,{phone:ref.current.value}))
     break;
+   case 'bio':
+    dispatch(createAction(actions.SET_BIO,{bio:ref.current.value}))
    default:
      break;
   }

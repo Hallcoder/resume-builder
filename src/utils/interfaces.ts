@@ -6,4 +6,6 @@ export default interface State{
     headLine?:string;
     phone?:string;
     linkedIn?:string;
+    bio?:string;
+    
 }

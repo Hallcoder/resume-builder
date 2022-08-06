@@ -22,7 +22,10 @@ const Template1: React.FC = () => {
         </header>
         <section className="flex w-full h-full">
             <main className='h-full w-8/12'>
-                <div></div>
+                <div className='h-fit flex flex-col'>
+                <h2 className='font-semibold'>{state.bio && 'Bio'}</h2> 
+                <p className='text-xs'>{state.bio ? state.bio:''}</p>   
+                </div>
                 <div></div>
                 <div></div>
             </main>

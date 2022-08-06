@@ -25,7 +25,10 @@ const reducer:(state:State,action:{type:string,payLoad:State}) => State = (state
     return currentState;
     case actions.SET_LINKEDIN:
         currentState.linkedIn = action.payLoad.linkedIn;
-        return currentState
+        return currentState;
+    case actions.SET_BIO:
+        currentState.bio = action.payLoad.bio;
+        return currentState;
     default:
         return state;
  }
