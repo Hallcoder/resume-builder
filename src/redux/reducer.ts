@@ -26,6 +26,9 @@ const reducer:(state:State,action:{type:string,payLoad:State}) => State = (state
     case actions.SET_LINKEDIN:
         currentState.linkedIn = action.payLoad.linkedIn;
         return currentState;
+    case actions.ADD_SKILL:
+        let skills = currentState.skills?.slice();
+        skills?.push(action.payLoad.skill!)
     case actions.SET_BIO:
         currentState.bio = action.payLoad.bio;
         return currentState;

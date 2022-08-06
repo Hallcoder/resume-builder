@@ -5,14 +5,14 @@ import  State  from '../utils/interfaces';
 const Template1: React.FC = () => { 
     const state:State  = useSelector(state => state);
     console.log(state)
-    return <div className="relative h-full flex flex-col rounded-md">
+    return <div className="relative h-full  flex flex-col rounded-md">
         <header className="h-[15vh] rounded-t-md bg-[#303846]">
             <div className='flex h-full w-full text-white'>
                 <img src="" alt="" className='h-full bg-white w-2/12' />
                 <div className='flex justify-around flex-col w-7/12'>
                  <h2>{state.names? state.names :'Mwenedata Apotre'}</h2>
                  <h6 className='text-sm text-gray-400'>{state.headLine? state.headLine:'HeadLine'}</h6>
-                 <div className='flex justify-around mt-6 border w-full'>
+                 <div className='flex justify-around mt-6  w-full'>
                    <h4 className='m-1 text-xs text-gray-500'>{state.email || 'Email' }</h4>  
                    <h4 className='m-1 text-xs text-gray-500'>{state.phone || 'Phone'}</h4> 
                    <h4 className='m-1 text-xs text-gray-500'>{state.address || 'Address'}</h4> 

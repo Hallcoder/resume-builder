@@ -1,7 +1,6 @@
 import {Dispatch, RefObject } from "react";
 import * as actions from '../redux/actionTypes'
 import createAction from "../redux/actionCreators";
-import { css } from "@emotion/react";
  const handleChange :(act: string,ref:RefObject<any>,dispatch:Dispatch<any>)=> void = (act,ref:RefObject<any>,dispatch) => {
     switch (act) {
    case "names":
@@ -24,6 +23,9 @@ import { css } from "@emotion/react";
     break;
    case 'bio':
     dispatch(createAction(actions.SET_BIO,{bio:ref.current.value}))
+    break;
+   case 'skill':
+    dispatch(createAction(actions.ADD_SKILL,{skill:{id:Math.random().toString(),title:ref.current.value,level:'Excellent'}}))
    default:
      break;
   }

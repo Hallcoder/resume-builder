@@ -7,5 +7,6 @@ export default interface State{
     phone?:string;
     linkedIn?:string;
     bio?:string;
-    
+    skills?:Object[];
+    skill?:{id:string,title:string};
 }
