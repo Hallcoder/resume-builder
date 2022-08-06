@@ -1,7 +1,6 @@
-import * as actions from "../../redux/actionTypes";
 import { useDispatch } from "react-redux";
 import Input from "../common/Input";
-import createAction from "../../redux/actionCreators";
+import handleChange from "../../utils/handleChange";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 import State from "./../../utils/interfaces";
@@ -29,7 +28,7 @@ const PersonDetails = () => {
               label="Full names"
               className="m-1 h-3/6 border"
               refr={nameRef}
-              onChange={() => handleChange("names")}
+              onChange={() => handleChange("names",nameRef,dispatch)}
             />
             <Input
               value={state.familyName}
@@ -37,7 +36,7 @@ const PersonDetails = () => {
               label="Family name"
               refr={fnameRef}
               className="h-3/6 border  m-1"
-              onChange={() => handleChange("familyName")}
+              onChange={() => handleChange("familyName",fnameRef,dispatch)}
             />
           </div>
           <div className="flex w-full h-2/6">
@@ -45,7 +44,7 @@ const PersonDetails = () => {
               value={state.email}
               label="Email"
               refr={emailRef}
-              onChange={() => handleChange("email")}
+              onChange={() => handleChange("email",emailRef,dispatch)}
               className="w-full border h-3/6"
             />
           </div>
@@ -56,28 +55,28 @@ const PersonDetails = () => {
           value={state.headLine}
           label="Headline"
           refr={hRef}
-          onChange={() => handleChange("email")}
+          onChange={() => handleChange("headLine",hRef,dispatch)}
           className="w-full h-3/6 border"
         />
         <Input
           value={state.phone}
           label="Phone Number"
           refr={phoneRef}
-          onChange={() => handleChange("phone")}
+          onChange={() => handleChange("phone",phoneRef,dispatch)}
           className="w-full h-3/6 border"
         />
         <Input
           value={state.address}
           label="Address"
           refr={addressRef}
-          onChange={() => handleChange("address")}
+          onChange={() => handleChange("address",addressRef,dispatch)}
           className="w-full h-3/6 border"
         />
         <Input
           value={state.linkedIn}
           label="LinkedIn"
           refr={lRef}
-          onChange={() => handleChange("linkedIn")}
+          onChange={() => handleChange("linkedIn",lRef,dispatch)}
           className="w-full h-3/6 border"
         />
       </div>
