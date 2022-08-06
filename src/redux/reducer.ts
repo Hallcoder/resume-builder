@@ -1,39 +1,30 @@
 import * as actions from '../redux/actionTypes'
+import State from '../utils/interfaces'
 
-interface State{
-    names?:string,
-    familyName?:string,
-    address?:string,
-    email?:string,
-    headLine?:string,
-    phone?:string,
-    linkedIn?:string,
-}
-
-const reducer:(state:State,action:{type:string,payLoad:Object}) => State = (state:State={},action:{type:string,payLoad:Object}) => {
+const reducer:(state:State,action:{type:string,payLoad:State}) => State = (state:State={},action:{type:string,payLoad:State}) => {
     let currentState:State = {...state};
-    let {address,names,email,familyName,headLine,phone,linkedIn} = <State>action.payLoad 
+    // let {address,names,email,familyName,headLine,phone,linkedIn} = action!.payLoad! as State || undefined;
     switch(action.type){
     case actions.SET_NAME:
-        currentState.names = names;
+        currentState.names = action.payLoad.names;
     return currentState;
     case actions.SET_EMAIL:
-        currentState.email = email;
+        currentState.email = action.payLoad.email;
     return currentState;
     case actions.SET_FAMILY_NAME:
-        currentState.familyName = familyName;
+        currentState.familyName = action.payLoad.familyName;
     return currentState;
     case actions.SET_HEAD:
-        currentState.headLine = headLine;
+        currentState.headLine = action.payLoad.headLine;
     return currentState;
     case actions.SET_PHONE:
-        currentState.phone = phone;
+        currentState.phone = action.payLoad.phone;
     return currentState;
     case actions.SET_ADDRESS:
-        currentState.address = address;
+        currentState.address = action.payLoad.address;
     return currentState;
     case actions.SET_LINKEDIN:
-        currentState.linkedIn = linkedIn;
+        currentState.linkedIn = action.payLoad.linkedIn;
         return currentState
     default:
         return state;
