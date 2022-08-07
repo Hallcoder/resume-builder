@@ -26,19 +26,8 @@ const reducer:(state:State,action:{type:string,payLoad:State}) => State = (state
     case actions.SET_LINKEDIN:
         currentState.linkedIn = action.payLoad.linkedIn;
         return currentState;
-    case actions.ADD_SKILL:
-        console.log('adding new skill');
-        let skills = currentState.skills?.slice();
-        console.log(skills)
-        skills?.push(action.payLoad.skill!);
-        return currentState;
     case actions.SET_BIO:
         currentState.bio = action.payLoad.bio;
-        return currentState;
-    case actions.EDIT_SKILL:
-        skills = currentState.skills?.slice();
-        let currentSkill  = skills?.find((sk:State) => sk.id === action.payLoad.skill!.id);
-        currentSkill!.title = action.payLoad.skill!.newValue;
         return currentState;
     default:
         return state;

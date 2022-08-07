@@ -8,7 +8,5 @@ export default class State{
     phone?:string;
     linkedIn?:string;
     bio?:string;
-    skill?:{id:string,title:string,level:string,newValue?:string};
-    skills?:skill[] = [{id:'1',title:'Work',level:'Excellent'}];
     id?:string;
 }

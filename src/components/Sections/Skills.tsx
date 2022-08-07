@@ -28,7 +28,7 @@ const Skills: React.FC = () => {
         <MdAdd onClick={handleDisplayForm} /> Add Skill
       </div>
       <div style={styles}>
-         <SkillAndLanguageForm name='Skill' identifier="new" onDone={() => handleAddNewSkill()}/> 
+         <SkillAndLanguageForm name='Skill' /> 
       </div>
     </div>
   );

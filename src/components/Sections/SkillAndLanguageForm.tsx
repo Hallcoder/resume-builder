@@ -8,11 +8,8 @@ import State from './../../utils/interfaces';
 interface Props {
   name: string;
   onDone?: Function;
-  value?: string;
-  identifier?:string,
-  skill?:State,
 }
-const SkillAndLanguageForm: React.FC<Props> = ({ name, onDone, value,identifier,skill}) => {
+const SkillAndLanguageForm: React.FC<Props> = ({ name, onDone}) => {
   const dispatch = useDispatch();
   const ref = useRef<HTMLInputElement>(null);
   return (
@@ -21,9 +18,8 @@ const SkillAndLanguageForm: React.FC<Props> = ({ name, onDone, value,identifier,
         <h1 className="text-sm text-gray-500 ml-6">{name}</h1>
         <Input
           refr={ref}
-          value={value ? value.toLowerCase() : ""}
+          value={'value' ? 'value'.toLowerCase() : ""}
           id="skill"
-          onChange={identifier ? () => handleChange("new-skill",ref,dispatch):() => handleChange("edit-skill", ref, dispatch,skill)}
           className="w-11/12 m-auto border text-sm h-3/6 rounded-md mt-2"
         />
       </div>

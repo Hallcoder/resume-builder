@@ -13,7 +13,7 @@ interface Props{
 const Input:React.FC<Props> = ({label,type,placeholder,id,refr,onChange,className,value}) => {
     return <div className="h-[10vh] flex flex-col w-full">
         <label>{label}</label>
-        <input type={type ? type:'text'} ref={refr} onChange={onChange} placeholder={placeholder} id={id} className={className?.concat(' rounded-sm')}/>
+        <input type={type ? type:'text'} ref={refr} value={value} onChange={onChange} placeholder={placeholder} id={id} className={className?.concat(' rounded-sm')}/>
         </div>
 }
 
