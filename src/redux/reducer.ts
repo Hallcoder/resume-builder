@@ -2,7 +2,7 @@ import * as actions from '../redux/actionTypes'
 import State from '../utils/interfaces'
 
 const reducer:(state:State,action:{type:string,payLoad:State}) => State = (state:State={},action:{type:string,payLoad:State}) => {
-    let currentState:State = {...state};
+    let currentState:State = new State();
     // let {address,names,email,familyName,headLine,phone,linkedIn} = action!.payLoad! as State || undefined;
     switch(action.type){
     case actions.SET_NAME:
@@ -27,10 +27,18 @@ const reducer:(state:State,action:{type:string,payLoad:State}) => State = (state
         currentState.linkedIn = action.payLoad.linkedIn;
         return currentState;
     case actions.ADD_SKILL:
+        console.log('adding new skill');
         let skills = currentState.skills?.slice();
-        skills?.push(action.payLoad.skill!)
+        console.log(skills)
+        skills?.push(action.payLoad.skill!);
+        return currentState;
     case actions.SET_BIO:
         currentState.bio = action.payLoad.bio;
+        return currentState;
+    case actions.EDIT_SKILL:
+        skills = currentState.skills?.slice();
+        let currentSkill  = skills?.find((sk:State) => sk.id === action.payLoad.skill!.id);
+        currentSkill!.title = action.payLoad.skill!.newValue;
         return currentState;
     default:
         return state;

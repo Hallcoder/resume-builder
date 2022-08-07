@@ -4,24 +4,27 @@ import Input from "../common/Input";
 import Done from "../Done";
 import { useDispatch, useSelector } from "react-redux";
 import handleChange from "../../utils/handleChange";
+import State from './../../utils/interfaces';
 interface Props {
   name: string;
   onDone?: Function;
   value?: string;
+  identifier?:string,
+  skill?:State,
 }
-const SkillAndLanguageForm: React.FC<Props> = ({ name, onDone, value }) => {
+const SkillAndLanguageForm: React.FC<Props> = ({ name, onDone, value,identifier,skill}) => {
   const dispatch = useDispatch();
   const ref = useRef<HTMLInputElement>(null);
   return (
-    <div className="flex flex-col h-3/6 m-auto mt-2 w-11/12 border rounded-md">
+    <div className="flex flex-col h-3/6 mr-auto ml-auto m-1 mt-2 w-11/12 border rounded-md">
       <div className="flex flex-col">
-        <h1 className="text-sm text-gray-500">{name}</h1>
+        <h1 className="text-sm text-gray-500 ml-6">{name}</h1>
         <Input
           refr={ref}
           value={value ? value.toLowerCase() : ""}
           id="skill"
-          onChange={() => handleChange("skill", ref, dispatch)}
-          className="w-11/12 m-auto border h-3/6 rounded-md mt-2"
+          onChange={identifier ? () => handleChange("new-skill",ref,dispatch):() => handleChange("edit-skill", ref, dispatch,skill)}
+          className="w-11/12 m-auto border text-sm h-3/6 rounded-md mt-2"
         />
       </div>
       <h1 className="text-sm ml-6 text-gray-500">Level</h1>

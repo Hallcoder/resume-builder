@@ -2,19 +2,21 @@ import React, { useState } from "react";
 import { MdModeEdit } from "react-icons/md";
 import SkillAndLanguageForm from "./Sections/SkillAndLanguageForm";
 import handleChange from './../utils/handleChange';
+import State from './../utils/interfaces';
 interface Props{
 title: string,
 value?:string,
 level?: string,
+skill?:State,
 }
-const Block: React.FC<Props> = ({title, level,value}) => {
+const Block: React.FC<Props> = ({title, level,value,skill}) => {
   const [status, setStatus] = useState("set");
   const handleChangeStatus = (status:string) => {
     setStatus(status)
   }
   if (status === "set") {
     return (
-      <div className="flex w-11/12 h-[10vh] m-auto mt-1 items-center border border-gray-400 shadow-md rounded-sm">
+      <div className="flex w-11/12  h-[10vh] ml-auto mr-auto m-1 mt-1 items-center border border-gray-400 shadow-md rounded-sm">
         <div className="w-6/12 m-1">
           <h1>{title}</h1>
           <h5 className="text-sm mt-2 text-gray-500">{level}</h5>
@@ -26,7 +28,7 @@ const Block: React.FC<Props> = ({title, level,value}) => {
     );
   } else if (status === "edit") {
     return <div>
-    <SkillAndLanguageForm name={'Skill'} value={value} onDone={handleChangeStatus}/>
+    <SkillAndLanguageForm name={'Skill'} value={value} onDone={handleChangeStatus} skill={skill}/>
     </div>;
   } else {
     return <div>

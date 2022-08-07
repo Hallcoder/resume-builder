@@ -1,5 +1,6 @@
-export default interface State{
-    names?:string;
+type skill = {id:string,title:string,level:string,newValue?:string}; 
+export default class State{
+    names?:string='s';
     familyName?:string;
     address?:string ;
     email?:string;
@@ -7,6 +8,7 @@ export default interface State{
     phone?:string;
     linkedIn?:string;
     bio?:string;
-    skills?:Object[];
-    skill?:{id:string,title:string};
+    skill?:{id:string,title:string,level:string,newValue?:string};
+    skills?:skill[] = [{id:'1',title:'Work',level:'Excellent'}];
+    id?:string;
 }
