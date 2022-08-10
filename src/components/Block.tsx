@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { RefObject, useState } from "react";
 import { MdModeEdit } from "react-icons/md";
 import SkillAndLanguageForm from "./Sections/SkillAndLanguageForm";
 import State from './../utils/interfaces';
+import { useDispatch } from 'react-redux';
 interface Props{
 title: string,
 value?:string,
 level?: string,
 skill?:State,
+onDone:Function,
 }
-const Block: React.FC<Props> = ({title, level,value,skill}) => {
+const Block: React.FC<Props> = ({title, level,value,skill,onDone}) => {
   const [status, setStatus] = useState("set");
+  const dispatch = useDispatch();
   const handleChangeStatus = (status:string) => {
     setStatus(status)
+  }
+  const editSkill = (ref:RefObject<HTMLInputElement>,skill:Object) => {
+    onDone(ref,skill)
+    setStatus('set');
   }
   if (status === "set") {
     return (
@@ -27,7 +34,7 @@ const Block: React.FC<Props> = ({title, level,value,skill}) => {
     );
   } else if (status === "edit") {
     return <div>
-    <SkillAndLanguageForm name={'Skill'}  onDone={handleChangeStatus} skill={skill}/>
+    <SkillAndLanguageForm name={'Skill'} value='' onDone={editSkill} skill={skill}/>
     </div>;
   } else {
     return <div>

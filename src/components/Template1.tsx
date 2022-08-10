@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import  State  from '../utils/interfaces';
 const Template1: React.FC = () => { 
     const state:State  = useSelector(state => state);
-    console.log(state)
     return <div className="relative h-full  flex flex-col rounded-md">
         <header className="h-[15vh] rounded-t-md bg-[#303846]">
             <div className='flex h-full w-full text-white'>

@@ -10,5 +10,5 @@ export default class State{
     bio?:string;
     id?:string;
     skill?:skill;
-    skills?:skill[]=[];
+    skills?:skill[]=[{id:'1',title:'React JS',level:'Experienced'}];
 }
