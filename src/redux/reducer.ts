@@ -29,6 +29,11 @@ const reducer:(state:State,action:{type:string,payLoad:State}) => State = (state
     case actions.SET_BIO:
         currentState.bio = action.payLoad.bio;
         return currentState;
+    case actions.ADD_SKILL:
+        console.log('adding new skill')
+        let skills = currentState.skills;
+        skills?.push(action.payLoad.skill!);
+        return currentState;
     default:
         return state;
  }

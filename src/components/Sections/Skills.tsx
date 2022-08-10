@@ -10,8 +10,11 @@ const Skills: React.FC = () => {
   let [styles, setStyles] = useState<{display: string}>({ display:'none' });
   const dispatch = useDispatch();
   const skills:{id:string,title:string,level:string}[]= useSelector(state => (state! as State).skills!);
+  const [changingValue,setChangingValue] = useState('');
   const handleAddNewSkill = (ref:RefObject<HTMLInputElement>,) => {
-  
+       setChangingValue(ref.current!.value);
+       handleChange('new-skill',ref,dispatch);
+       
   }
   const handleDisplayForm = () => {
     (addRef.current!as HTMLDivElement).style.display = 'none';
@@ -22,13 +25,15 @@ const Skills: React.FC = () => {
   return (
     <div className="w-full h-full min-h-fit">
      {skills?.map(skill => {
-      return <Block title={skill.title} level={skill.level} value={skill.title} skill={skill}/>
+      return <div>
+        <Block title={skill.title} level={skill.level} value={skill.title} skill={skill}/>
+      </div> 
      })}
       <div ref={addRef} className="w-2/12  flex border items-center mt-2 ml-6 h-10 rounded-md hover:bg-slate-100 border-gray-500 justify-around" onClick={handleDisplayForm}>
         <MdAdd onClick={handleDisplayForm} /> Add Skill
       </div>
       <div style={styles}>
-         <SkillAndLanguageForm name='Skill' /> 
+         <SkillAndLanguageForm name='Skill' onDone={handleAddNewSkill} value={changingValue}/> 
       </div>
     </div>
   );

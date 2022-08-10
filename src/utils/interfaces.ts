@@ -9,4 +9,6 @@ export default class State{
     linkedIn?:string;
     bio?:string;
     id?:string;
+    skill?:skill;
+    skills?:skill[]=[];
 }
