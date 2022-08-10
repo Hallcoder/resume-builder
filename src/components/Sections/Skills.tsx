@@ -9,7 +9,7 @@ import handleChange from "../../utils/handleChange";
 const Skills: React.FC = () => {
   let [styles, setStyles] = useState<{display: string}>({ display:'none' });
   const dispatch = useDispatch();
-  const skills:{id:string,title:string,level:string}[]= useSelector(state => state.skills!);
+  const skills:{id:string,title:string,level:string}[]= useSelector(state => (state as any).skills!);
   const [changingValue,setChangingValue] = useState('');
   const handleAddNewSkill = (ref:RefObject<HTMLInputElement>) => {
        setStyles({display:'none'});

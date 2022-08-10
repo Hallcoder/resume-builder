@@ -1,3 +1,4 @@
+ // @ts-nocheck
 import { Slider } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import Input from "../common/Input";
@@ -10,7 +11,7 @@ interface Props {
   onDone?: Function;
   value:string,
   changingValue?:string,
-  skill?:Object;
+  skill?:{id:string,title:string,level:string,newValue?:string};
 }
 const SkillAndLanguageForm: React.FC<Props> = ({name, onDone,value,changingValue,skill}) => {
   const dispatch = useDispatch();

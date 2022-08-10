@@ -1,3 +1,4 @@
+ // @ts-nocheck
 import * as actions from '../redux/actionTypes'
 import State from '../utils/interfaces'
 

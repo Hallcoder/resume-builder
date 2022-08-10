@@ -1,3 +1,4 @@
+ // @ts-nocheck
 import React, { RefObject, useRef, useState } from "react";
 import Input from "./common/Input";
 import Select1 from "./select";

@@ -1,3 +1,4 @@
+ // @ts-nocheck
 import { useDispatch } from "react-redux";
 import Input from "../common/Input";
 import handleChange from "../../utils/handleChange";
@@ -5,7 +6,7 @@ import { useRef } from "react";
 import { useSelector } from "react-redux";
 import State from "./../../utils/interfaces";
 const PersonDetails = () => {
-  const state: State = useSelector(state => state);
+  const state: State | any = useSelector(state => state);
   const dispatch = useDispatch();
   const { nameRef, fnameRef, emailRef, phoneRef, addressRef, hRef, lRef } = {
     nameRef: useRef<HTMLInputElement>(null),

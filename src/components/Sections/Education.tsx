@@ -9,19 +9,19 @@ import EducationBlock from '../EducationBlock';
 const Education:React.FC = () => {
     let [styles, setStyles] = useState<{display: string}>({ display:'none' });
     const edInputs:string [] = ['Degree','School','City','Start Date','End Date','Descripion']
-    const educations  = useSelector(state => state.educations);
+    const educations  = useSelector(state => (state as any).educations);
   const handleDisplayForm = () => {
     (addRef.current!as HTMLDivElement).style.display = 'none';
    styles.display === 'none' ? setStyles({display:'flex'}): setStyles({display:'none'})
    return
   };
-  const handleAddNewEducation = (ref) => {
+  const handleAddNewEducation = (ref:any) => {
 console.log(ref);
 
   }
   const addRef = useRef<HTMLDivElement>(null)
 return <div className="w-full">
-   {educations.map(ed => {
+   {educations.map((ed:any) => {
     return <EducationBlock title={ed.title} subtitle={ed.school}  />
    })}
     <div ref={addRef} className="w-2/12 flex border items-center mt-2 ml-6 h-10 rounded-md hover:bg-slate-100 border-gray-500 justify-around" onClick={handleDisplayForm}>

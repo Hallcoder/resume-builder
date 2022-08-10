@@ -2,9 +2,9 @@ import React, { EventHandler, RefObject } from 'react';
 import { MdDeleteForever } from 'react-icons/md';
 interface Props{
     onDone:any;
-    skill:Object;
-    refr:RefObject<HTMLInputElement>;
-    formRef:RefObject<HTMLInputElement>;
+    skill?:Object;
+    refr?:RefObject<HTMLInputElement>;
+    formRef?:RefObject<HTMLInputElement>;
 }
 const Done:React.FC<Props> = ({onDone,refr,skill}) => {
     return <div className='w-11/12 flex justify-end items-center'>

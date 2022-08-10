@@ -1,3 +1,4 @@
+ // @ts-nocheck
 import React, { RefObject, useState } from "react";
 import { MdModeEdit } from "react-icons/md";
 import SkillAndLanguageForm from "./Sections/SkillAndLanguageForm";
@@ -8,7 +9,7 @@ title: string,
 value?:string,
 level?: string,
 skill?:State,
-onDone:Function,
+onDone?:Function,
 subtitle?:string,
 }
 const Block: React.FC<Props> = ({title, level,value,skill,onDone}) => {
@@ -18,7 +19,7 @@ const Block: React.FC<Props> = ({title, level,value,skill,onDone}) => {
     setStatus(status)
   }
   const editSkill = (ref:RefObject<HTMLInputElement>,skill:Object) => {
-    onDone(ref,skill)
+    onDone!(ref,skill)
     setStatus('set');
   }
   if (status === "set") {
