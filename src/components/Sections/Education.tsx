@@ -3,24 +3,32 @@ import Block from '../Block';
 import Form from '../Form';
 import { MdAdd } from 'react-icons/md';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import EducationBlock from '../EducationBlock';
 
 const Education:React.FC = () => {
     let [styles, setStyles] = useState<{display: string}>({ display:'none' });
+    const edInputs:string [] = ['Degree','School','City','Start Date','End Date','Descripion']
+    const educations  = useSelector(state => state.educations);
   const handleDisplayForm = () => {
     (addRef.current!as HTMLDivElement).style.display = 'none';
    styles.display === 'none' ? setStyles({display:'flex'}): setStyles({display:'none'})
    return
   };
+  const handleAddNewEducation = (ref) => {
+console.log(ref);
+
+  }
   const addRef = useRef<HTMLDivElement>(null)
 return <div className="w-full">
-    <Block title='High School Diploma' subtitle='Rwanda Coding Academy'/>
-    <Block title='High School Diploma' subtitle='Rwanda Coding Academy'/>
-    <Block title='High School Diploma' subtitle='Rwanda Coding Academy'/>
+   {educations.map(ed => {
+    return <EducationBlock title={ed.title} subtitle={ed.school}  />
+   })}
     <div ref={addRef} className="w-2/12 flex border items-center mt-2 ml-6 h-10 rounded-md hover:bg-slate-100 border-gray-500 justify-around" onClick={handleDisplayForm}>
         <MdAdd onClick={handleDisplayForm} /> Add Education
       </div>
       <div style={styles}>
-         <Form name='Education' inputs={['Education','School','City']}/> 
+         <Form name='Education' inputs={edInputs}/> 
       </div>
 </div>
 }

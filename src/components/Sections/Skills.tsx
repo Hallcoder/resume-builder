@@ -10,7 +10,6 @@ const Skills: React.FC = () => {
   let [styles, setStyles] = useState<{display: string}>({ display:'none' });
   const dispatch = useDispatch();
   const skills:{id:string,title:string,level:string}[]= useSelector(state => state.skills!);
-  console.log(skills)
   const [changingValue,setChangingValue] = useState('');
   const handleAddNewSkill = (ref:RefObject<HTMLInputElement>) => {
        setStyles({display:'none'});

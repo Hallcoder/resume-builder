@@ -9,7 +9,10 @@ import {
 import { AiOutlineOrderedList } from "react-icons/ai";
 import handleChange from "../utils/handleChange";
 import { useDispatch } from "react-redux";
-const Description: React.FC = () => {
+type props ={
+name?:string,
+}
+const Description: React.FC<props> = ({name}) => {
   const textRef = useRef<HTMLTextAreaElement>(null);
   const dispatch = useDispatch()
   return (
@@ -22,7 +25,7 @@ const Description: React.FC = () => {
           cols={60}
           rows={8}
           ref={textRef}
-          onChange={() => handleChange('bio',textRef,dispatch)}
+          onChange={!name ? () => handleChange('bio',textRef,dispatch):() => alert('I skipped that bro, Sorry kbs')}
         ></textarea>
       </div>
       <div className="w-5/12 justify-around flex text-3xl">

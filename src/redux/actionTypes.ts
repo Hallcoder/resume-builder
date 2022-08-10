@@ -8,3 +8,5 @@ export const SET_LINKEDIN: string = "setLinkedin";
 export const SET_BIO: string = "setBio";
 export const ADD_SKILL:string = "addSkill";
 export const EDIT_SKILL:string = "editSkill";
+export const ADD_EDU:string = 'addedu'
+export const EDIT_EDU:string = 'editedu'

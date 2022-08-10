@@ -9,6 +9,7 @@ value?:string,
 level?: string,
 skill?:State,
 onDone:Function,
+subtitle?:string,
 }
 const Block: React.FC<Props> = ({title, level,value,skill,onDone}) => {
   const [status, setStatus] = useState("set");
