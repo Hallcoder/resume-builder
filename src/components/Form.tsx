@@ -1,5 +1,5 @@
  // @ts-nocheck
-import React, { RefObject, useRef, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 import Input from "./common/Input";
 import Select1 from "./select";
 import Joi from 'joi'
@@ -9,12 +9,14 @@ import Done from "./Done";
 import handleChange from "../utils/handleChange";
 import { useDispatch } from "react-redux";
 import { Dispatch } from 'react';
+import populate from "../utils/populate";
 interface Props {
   inputs: string[];
   name:string;
   onDone?:Function;
+  edu?:{id:string,degree:string,school:string,city:string,startdate:string,enddate:string,description:string};
 }
-const Form: React.FC<Props> = ({name, inputs,onDone}) => {
+const Form: React.FC<Props> = ({name, inputs,onDone,edu}) => {
   const [state,setState] = useState({
     [inputs[0]]:'',
     [inputs[1]]:'',
@@ -23,7 +25,10 @@ const Form: React.FC<Props> = ({name, inputs,onDone}) => {
     [inputs[4]]:'',
   })
   const dummyref = useRef();
-  const Dispatch = useDispatch()
+  const Dispatch = useDispatch();
+  if(edu){
+    populate(useEffect,state,edu,setState);
+  }
   const handleLocalChange = (ref:RefObject<any>) => {   
     let st = {...state}
     st[ref.current.name] = ref.current.value;
@@ -33,7 +38,10 @@ const Form: React.FC<Props> = ({name, inputs,onDone}) => {
     handleChange('new-education',dummyref,Dispatch,state);
     onDone();
   }
-  const handleEditNewEdu = () => {}
+  const handleEditNewEdu = () => {
+    handleChange('edit-education',dummyref,Dispatch,state);
+    onDone();
+  }
   return (
     <div className="w-full mt-2 border rounded-md border-black p-1 min-h-fit h-fit text-sm">
       <div className="w-full h-[8vh]">

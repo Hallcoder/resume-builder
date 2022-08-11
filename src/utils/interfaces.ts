@@ -11,7 +11,6 @@ export default class State{
     bio?:string;
     id?:string;
     skill?:skill;
-    styles:{display:string} = {display:'none'};
     skills?:skill[]=[{id:'1',title:'React JS',level:'Experienced'}];
     educations?:education[] = [{id:'1',degree:'Bachelor Degree',school:'University of Rwanda',city:'Huye',startdate:'12/08/2015',enddate:'12/08/2019',description:'Bachelor degree in Information & Technology'}]
 }
