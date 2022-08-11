@@ -14,9 +14,10 @@ interface Props {
   inputs: string[];
   name:string;
   onDone?:Function;
+  id?:string,
   edu?:{id:string,degree:string,school:string,city:string,startdate:string,enddate:string,description:string};
 }
-const Form: React.FC<Props> = ({name, inputs,onDone,edu}) => {
+const Form: React.FC<Props> = ({name, inputs,onDone,edu,id}) => {
   const [state,setState] = useState({
     [inputs[0]]:'',
     [inputs[1]]:'',
@@ -39,7 +40,7 @@ const Form: React.FC<Props> = ({name, inputs,onDone,edu}) => {
     onDone();
   }
   const handleEditNewEdu = () => {
-    handleChange('edit-education',dummyref,Dispatch,state);
+    handleChange('edit-education',dummyref,Dispatch,{id:id,...state});
     onDone();
   }
   return (
@@ -54,11 +55,11 @@ const Form: React.FC<Props> = ({name, inputs,onDone,edu}) => {
       <div className="w-full h-[8vh] justify-around flex">
         <div className='flex m-1 min-w-fit items-center'>
           <h3 className='m-1'>{inputs[3]}</h3>
-          <input type="date" name={inputs[3]} className='border p-4' />
-        </div>
+          <Input type="date" name={inputs[3]} value={state[inputs[3]]} onChange={handleLocalChange} className='border p-4 mt-2' />
+        </div> 
         <div className='flex m-1 items-center'>
         <h3 className='m-1'>{inputs[4]}</h3>
-         <input  type='date' name={inputs[4]} className='border p-4'></input>
+         <Input  type='date' name={inputs[4]} value={state[inputs[4]]} onChange={handleLocalChange} className='border p-4 mt-2'/>
         </div>
       </div>
       <div className='h-[35vh]'>

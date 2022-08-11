@@ -60,7 +60,20 @@ const reducer: (
         startdate: action.payLoad.edu["Start Date"].toString(),
         enddate: action.payLoad.edu["End Date"].toString(),
       };
-       educations.push(validNewEdu);
+      educations.push(validNewEdu);
+      return currentState;
+    case actions.EDIT_EDU:
+      let edu = currentState.educations.find(
+        ed => ed.id === action.payLoad.edu.id
+      );
+      if (edu) {
+        (edu.degree = action.payLoad.edu["Degree"]),
+          (edu.city = action.payLoad.edu["City"]),
+          (edu.enddate = action.payLoad.edu["End Date"].toString()),
+          (edu.startdate = action.payLoad.edu["Start Date"].toString()),
+          (edu.school = action.payLoad.edu["School"]);
+        return currentState;
+      }
       return currentState;
     default:
       return state;

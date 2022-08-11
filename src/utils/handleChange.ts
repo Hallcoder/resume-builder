@@ -31,7 +31,11 @@ import createAction from "../redux/actionCreators";
     dispatch(createAction(actions.EDIT_SKILL,{skill:payLoad,title:ref.current.value,level:'Experienced'}))
     break;
   case 'new-education':
-   dispatch(createAction(actions.ADD_EDU,{id:Math.random().toString(),edu:payLoad}!))
+   dispatch(createAction(actions.ADD_EDU,{id:Math.random().toString(),edu:payLoad}!));
+   break;
+  case 'edit-education':
+    dispatch(createAction(actions.EDIT_EDU,{edu:payLoad}));
+    break;
    default:
      break;
   }
