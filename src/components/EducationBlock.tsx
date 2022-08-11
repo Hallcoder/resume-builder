@@ -20,6 +20,9 @@ const EducationBlock: React.FC<Props> = ({title, subtitle,value,skill,onDone}) =
   const handleChangeStatus = (status:string) => {
     setStatus(status)
   }
+  const handleEditEdu = () => {
+    setStatus('set')
+  }
   if (status === "set") {
     return (
       <div className="flex w-11/12  h-[10vh] ml-auto mr-auto m-1 mt-1 items-center border border-gray-400 shadow-md rounded-sm">
@@ -34,7 +37,7 @@ const EducationBlock: React.FC<Props> = ({title, subtitle,value,skill,onDone}) =
     );
   } else if (status === "edit") {
     return <div>
-    <Form name={'Skill'}  inputs={edInputs} />
+    <Form name={'edit-edu'}  inputs={edInputs} onDone={handleEditEdu}/>
     </div>;
   } else {
     return <div>

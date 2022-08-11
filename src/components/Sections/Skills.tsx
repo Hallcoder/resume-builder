@@ -30,7 +30,7 @@ const Skills: React.FC = () => {
   return (
     <div className="w-full h-full min-h-fit">
      {skills?.map(skill => {
-      return <div>
+      return <div key={skill.id}>
         <Block title={skill.title} level={skill.level} value={skill.title} skill={skill} onDone={handleEditSkill}/>
       </div> 
      })}

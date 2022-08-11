@@ -16,19 +16,18 @@ const Education:React.FC = () => {
    return
   };
   const handleAddNewEducation = (ref:any) => {
-console.log(ref);
-
+    setStyles({display:'none'});
   }
   const addRef = useRef<HTMLDivElement>(null)
 return <div className="w-full">
    {educations.map((ed:any) => {
-    return <EducationBlock title={ed.title} subtitle={ed.school}  />
+    return <EducationBlock key={ed.id} title={ed.degree} subtitle={ed.school}  />
    })}
     <div ref={addRef} className="w-2/12 flex border items-center mt-2 ml-6 h-10 rounded-md hover:bg-slate-100 border-gray-500 justify-around" onClick={handleDisplayForm}>
         <MdAdd onClick={handleDisplayForm} /> Add Education
       </div>
       <div style={styles}>
-         <Form name='Education' inputs={edInputs}/> 
+         <Form name='new-edu' inputs={edInputs} onDone={handleAddNewEducation}/> 
       </div>
 </div>
 }

@@ -8,11 +8,13 @@ import Description from "./Description";
 import Done from "./Done";
 import handleChange from "../utils/handleChange";
 import { useDispatch } from "react-redux";
+import { Dispatch } from 'react';
 interface Props {
   inputs: string[];
   name:string;
+  onDone?:Function;
 }
-const Form: React.FC<Props> = ({ inputs }) => {
+const Form: React.FC<Props> = ({name, inputs,onDone}) => {
   const [state,setState] = useState({
     [inputs[0]]:'',
     [inputs[1]]:'',
@@ -20,22 +22,18 @@ const Form: React.FC<Props> = ({ inputs }) => {
     [inputs[3]]:'',
     [inputs[4]]:'',
   })
-  const schema = Joi.object({
-    [inputs[0]]:Joi.string().required(),
-    [inputs[1]]:Joi.string().required(),
-    [inputs[2]]:Joi.string().required(),
-    [inputs[3]]:Joi.string().required(),
-    [inputs[4]]:Joi.string().required(),
-  })
+  const dummyref = useRef();
+  const Dispatch = useDispatch()
   const handleLocalChange = (ref:RefObject<any>) => {   
     let st = {...state}
     st[ref.current.name] = ref.current.value;
     setState(st);
   }
-  const handleSubmit = () => {
-  handleChange('new-education',useRef(),useDispatch(),state);
-  alert('Loading')
+  const handleSubmitNewEdu = () => {
+    handleChange('new-education',dummyref,Dispatch,state);
+    onDone();
   }
+  const handleEditNewEdu = () => {}
   return (
     <div className="w-full mt-2 border rounded-md border-black p-1 min-h-fit h-fit text-sm">
       <div className="w-full h-[8vh]">
@@ -58,7 +56,7 @@ const Form: React.FC<Props> = ({ inputs }) => {
       <div className='h-[35vh]'>
         <h1 className='ml-6'>Description</h1>
         <Description name="ed"/>
-        <Done onDone={handleSubmit}/>
+        <Done onDone={name !=='edit-edu' ? handleSubmitNewEdu:handleEditNewEdu}/>
       </div>
     </div>
   );
