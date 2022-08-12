@@ -25,7 +25,11 @@ import createAction from "../redux/actionCreators";
     dispatch(createAction(actions.SET_BIO,{bio:ref.current.value}))
     break;
   case 'new-skill':
-    dispatch(createAction(actions.ADD_SKILL,{skill:{id:Math.random().toString(),title:ref.current.value,level:'Experienced'}}))
+    try {
+      dispatch(createAction(actions.ADD_SKILL,{skill:{id:Math.random().toString(),title:ref.current.value,level:'Experienced'}}))
+    } catch (error) {
+     alert(error) 
+    }
     break;
   case 'edit-skill':
     dispatch(createAction(actions.EDIT_SKILL,{skill:payLoad,title:ref.current.value,level:'Experienced'}))

@@ -9,7 +9,7 @@ const reducer: (
   state: State = new State(),
   action: { type: string; payLoad: State }
 ) => {
-  let currentState: State = new State();
+  let currentState: State = {...state};
   // let {address,names,email,familyName,headLine,phone,linkedIn} = action!.payLoad! as State || undefined;
   switch (action.type) {
     case actions.SET_NAME:

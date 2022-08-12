@@ -16,6 +16,7 @@ const Education:React.FC = () => {
    return
   };
   const handleAddNewEducation = (ref:any) => {
+    (addRef.current!as HTMLDivElement).style.display = 'flex';
     setStyles({display:'none'});
   }
   const addRef = useRef<HTMLDivElement>(null)
