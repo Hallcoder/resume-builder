@@ -5,4 +5,15 @@
     ::-webkit-scrollbar{
         display:;
     }
+    progress::-webkit-progress-bar {
+  background-color: white;
+  color: red;
+  border-radius: 2px;
+  height:3px;
+  width:93%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+progress::-webkit-progress-value {
+background-color:#303846;
+}
 }

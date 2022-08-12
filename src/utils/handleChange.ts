@@ -24,6 +24,9 @@ import createAction from "../redux/actionCreators";
    case 'bio':
     dispatch(createAction(actions.SET_BIO,{bio:ref.current.value}))
     break;
+   case 'linkedIn':
+    dispatch(createAction(actions.SET_LINKEDIN,{linkedIn:ref.current.value}))
+    break;
   case 'new-skill':
     try {
       dispatch(createAction(actions.ADD_SKILL,{skill:{id:Math.random().toString(),title:ref.current.value,level:'Experienced'}}))
