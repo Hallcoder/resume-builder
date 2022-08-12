@@ -15,10 +15,10 @@ const Languages: React.FC = () => {
        (addRef.current!as HTMLDivElement).style.display = 'block';
        handleChange('new-lang',ref,dispatch);
   }
-  const handleEditLanguage = (ref:RefObject<HTMLInputElement>,skill:Object) => {
+  const handleEditLanguage = (ref:RefObject<HTMLInputElement>,lang:Object) => {
     setStyles({display:'none'});
     (addRef.current!as HTMLDivElement).style.display = 'block';
-    handleChange('edit-skill',ref,dispatch,skill);
+    handleChange('edit-language',ref,dispatch,lang);
   }
   const handleDisplayForm = () => {
    (addRef.current!as HTMLDivElement).style.display = 'none';

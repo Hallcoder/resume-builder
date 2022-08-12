@@ -10,10 +10,10 @@ interface Props {
   name: string;
   onDone?: Function;
   value:string,
-  changingValue?:string,
+  language?:Object,
   skill?:{id:string,title:string,level:string,newValue?:string};
 }
-const SkillAndLanguageForm: React.FC<Props> = ({name, onDone,value,changingValue,skill}) => {
+const SkillAndLanguageForm: React.FC<Props> = ({name, onDone,language,skill}) => {
   const dispatch = useDispatch();
   const [InputValue,setValue] = useState('')
   const handleLocalChange = (ref:any) => {
@@ -22,7 +22,8 @@ const SkillAndLanguageForm: React.FC<Props> = ({name, onDone,value,changingValue
   const formRef = useRef<any>(null);
   const ref = useRef<HTMLInputElement>(null);
   useEffect(() => {
-       if(skill) setValue(skill!.title)
+       if(skill) setValue(skill!.title);
+       if(language) setValue(language.name);
   },[])
   return (
     <div ref={formRef} className="flex flex-col h-3/6 mr-auto ml-auto m-1 mt-2 w-11/12 border rounded-md">
@@ -43,7 +44,7 @@ const SkillAndLanguageForm: React.FC<Props> = ({name, onDone,value,changingValue
         </div>
         <span className="text-xs m-1">Make a choice</span>
       </div>
-      <Done onDone={onDone} refr={ref} skill={skill}/>
+      <Done onDone={onDone} refr={ref} language={language} skill={skill}/>
     </div>
   );
 };

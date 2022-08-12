@@ -78,8 +78,28 @@ const reducer: (
       }
       return currentState;
     case actions.ADD_LANG:
-      console.log(action.payLoad.lang)
+      console.log(action.payLoad.lang);
       currentState.languages = [...currentState.languages, action.payLoad.lang];
+      return currentState;
+    case actions.EDIT_LANG:
+      let lang = currentState.languages?.find(
+        lan => lan.id === action.payLoad.lang!.id
+      );
+      if (lang) {
+        lang!.name = action.payLoad.name;
+        return currentState;
+      }
+      return currentState;
+    case actions.ADD_EMP:
+      let validNewEmp = {
+        id: action.payLoad.id,
+        position: action.payLoad.emp.Position,
+        employer: action.payLoad.emp.Employer,
+        city: action.payLoad.emp.City,
+        startdate: action.payLoad.emp["Start Date"].toString(),
+        enddate: action.payLoad.emp["End Date"].toString(),
+      };
+      currentState.employments = [...currentState.employments, validNewEmp];
       return currentState;
     default:
       return state;

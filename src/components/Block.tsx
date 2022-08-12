@@ -23,7 +23,10 @@ const Block: React.FC<Props> = ({title, level,language,skill,onDone}) => {
     onDone!(ref,skill)
     setStatus('set');
   }
-  const editLanguage= () => {}
+  const editLanguage= (ref:RefObject<HTMLInputElement>,language:Object) => {
+  onDone!(ref,language);
+  setStatus('set');
+  }
   if (status === "set") {
     return (
       <div className="flex w-11/12  h-[10vh] ml-auto mr-auto m-1 mt-1 items-center border border-gray-400 shadow-md rounded-sm">
@@ -38,7 +41,7 @@ const Block: React.FC<Props> = ({title, level,language,skill,onDone}) => {
     );
   } else if (status === "edit") {
     return <div>
-    <SkillAndLanguageForm name={'Skill'} value='' onDone={editSkill} skill={skill}/>
+    <SkillAndLanguageForm name={!language ?'Skill':'Language'} value='' language={language} onDone={language ? editLanguage:editSkill} skill={skill}/>
     </div>;
   } else {
     return <div>

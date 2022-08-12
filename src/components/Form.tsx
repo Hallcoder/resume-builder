@@ -15,9 +15,10 @@ interface Props {
   name:string;
   onDone?:Function;
   id?:string,
+  emp?:Object,
   edu?:{id:string,degree:string,school:string,city:string,startdate:string,enddate:string,description:string};
 }
-const Form: React.FC<Props> = ({name, inputs,onDone,edu,id}) => {
+const Form: React.FC<Props> = ({name, inputs,onDone,edu,id,emp}) => {
   const [state,setState] = useState({
     [inputs[0]]:'',
     [inputs[1]]:'',
@@ -30,10 +31,20 @@ const Form: React.FC<Props> = ({name, inputs,onDone,edu,id}) => {
   if(edu){
     populate(useEffect,state,edu,setState);
   }
+  if(emp){
+    populate(useEffect,state,emp,setState);
+  }
   const handleLocalChange = (ref:RefObject<any>) => {   
     let st = {...state}
     st[ref.current.name] = ref.current.value;
     setState(st);
+  }
+  const handleSubmitNewEmp = () =>{
+  handleChange('new-employment',dummyref,Dispatch,state);
+  onDone();
+  }
+  const handleEditNewEmp = () => {
+
   }
   const handleSubmitNewEdu = () => {
     handleChange('new-education',dummyref,Dispatch,state);
@@ -65,7 +76,7 @@ const Form: React.FC<Props> = ({name, inputs,onDone,edu,id}) => {
       <div className='h-[35vh]'>
         <h1 className='ml-6'>Description</h1>
         <Description name="ed"/>
-        <Done onDone={name !=='edit-edu' ? handleSubmitNewEdu:handleEditNewEdu}/>
+        <Done onDone={(name !=='edit-edu' ? handleSubmitNewEdu:handleEditNewEdu) || name !== 'edit-emp' ? handleSubmitNewEmp:handleEditNewEmp}/>
       </div>
     </div>
   );

@@ -12,3 +12,5 @@ export const ADD_EDU:string = 'addedu';
 export const EDIT_EDU:string = 'editedu';
 export const SET_IMAGE:string = 'setimage';
 export const ADD_LANG:string = 'addlang';
+export const EDIT_LANG:string = 'editlang';
+export const ADD_EMP:string = 'addemp';

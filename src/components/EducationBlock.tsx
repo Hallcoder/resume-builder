@@ -13,11 +13,13 @@ skill?:State,
 onDone?:Function,
 subtitle?:string,
 id?:string,
+emp?:Object,
 edu?:{id:string,degree:string,school:string,city:string,startdate:string,enddate:string,description:string},
 }
-const EducationBlock: React.FC<Props> = ({title,id, subtitle,edu,onDone}) => {
+const EducationBlock: React.FC<Props> = ({title,id, subtitle,edu,emp}) => {
   const [status, setStatus] = useState("set");
-  const edInputs:string [] = ['Degree','School','City','Start Date','End Date','Descripion']
+  const edInputs:string [] = ['Degree','School','City','Start Date','End Date','Descripion'];
+  const emInputs:string [] = ['Position','Employer','City','Start Date','End Date','Descripion'];
   const dispatch = useDispatch();
   const handleChangeStatus = (status:string) => {
     setStatus(status)
@@ -39,7 +41,7 @@ const EducationBlock: React.FC<Props> = ({title,id, subtitle,edu,onDone}) => {
     );
   } else if (status === "edit") {
     return <div>
-    <Form name={'edit-edu'} edu={edu}  inputs={edInputs} id={id} onDone={handleEditEdu} />
+    <Form name={'edit-edu'} edu={edu} emp={emp}  inputs={emp? emInputs:edInputs} id={id} onDone={handleEditEdu} />
     </div>;
   } else {
     return <div>
