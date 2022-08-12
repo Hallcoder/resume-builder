@@ -7,10 +7,9 @@ const reducer: (
   action: { type: string; payLoad: State }
 ) => State = (
   state: State = new State(),
-  action: { type: string; payLoad: State }
+  action
 ) => {
   let currentState: State = {...state};
-  // let {address,names,email,familyName,headLine,phone,linkedIn} = action!.payLoad! as State || undefined;
   switch (action.type) {
     case actions.SET_NAME:
       currentState.names = action.payLoad.names;
@@ -37,9 +36,7 @@ const reducer: (
       currentState.bio = action.payLoad.bio;
       return currentState;
     case actions.ADD_SKILL:
-      console.log("adding new skill");
-      let skills = currentState.skills;
-      skills?.push(action.payLoad.skill!);
+      currentState.skills = [...currentState.skills,action.payLoad.skill]
       return currentState;
     case actions.EDIT_SKILL:
       let skill = currentState.skills?.find(
@@ -51,7 +48,6 @@ const reducer: (
       }
       return currentState;
     case actions.ADD_EDU:
-      let educations = currentState.educations;
       let validNewEdu = {
         id: action.payLoad.id,
         degree: action.payLoad.edu.Degree,
@@ -60,18 +56,20 @@ const reducer: (
         startdate: action.payLoad.edu["Start Date"].toString(),
         enddate: action.payLoad.edu["End Date"].toString(),
       };
-      educations.push(validNewEdu);
+     currentState.educations = [...currentState.educations, validNewEdu];
       return currentState;
     case actions.EDIT_EDU:
-      let edu = currentState.educations.find(
+      let edu = currentState.educations?.find(
         ed => ed.id === action.payLoad.edu.id
       );
+      let index:number = currentState.educations.indexOf(edu);
       if (edu) {
         (edu.degree = action.payLoad.edu["Degree"]),
           (edu.city = action.payLoad.edu["City"]),
           (edu.enddate = action.payLoad.edu["End Date"].toString()),
           (edu.startdate = action.payLoad.edu["Start Date"].toString()),
           (edu.school = action.payLoad.edu["School"]);
+          currentState.educations = [...currentState.educations.slice(0,index),edu,...currentState.educations.slice(index+1)]
         return currentState;
       }
       return currentState;

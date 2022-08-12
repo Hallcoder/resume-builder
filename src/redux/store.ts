@@ -1,14 +1,13 @@
 import {legacy_createStore as createStore} from 'redux'
 import {persistStore,persistReducer} from 'redux-persist';
 import hardSet from 'redux-persist/es/stateReconciler/hardSet';
-// import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
+import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage'
 import reducer from './reducer';
-
 const persistConfig = {
     key: 'root',
     storage,
-    stateReconciler:hardSet,
+    stateReconciler:autoMergeLevel2,
   }
 const persistedReducer = persistReducer<any,any>(persistConfig, reducer);
 
