@@ -15,8 +15,7 @@ const PersonDetails = () => {
     const reader  = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-        setimage(reader.result); 
-        
+        setimage(reader.result);   
   }
 }
 useEffect(() => {

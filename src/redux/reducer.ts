@@ -9,9 +9,8 @@ const reducer: (
   let currentState: State = { ...state };
   switch (action.type) {
     case actions.SET_IMAGE:
-      console.log(action.payLoad)
-     currentState.image = action.payLoad.image.image;
-     return currentState;
+      currentState.image = action.payLoad.image.image;
+      return currentState;
     case actions.SET_NAME:
       currentState.names = action.payLoad.names;
       return currentState;
@@ -77,6 +76,10 @@ const reducer: (
         ];
         return currentState;
       }
+      return currentState;
+    case actions.ADD_LANG:
+      console.log(action.payLoad.lang)
+      currentState.languages = [...currentState.languages, action.payLoad.lang];
       return currentState;
     default:
       return state;

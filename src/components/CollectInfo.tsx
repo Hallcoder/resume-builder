@@ -7,9 +7,9 @@ const CollectInfo:React.FC = ()  => {
         <Section title={'Bio'}    RealSection={'BIO'}/>
         <Section title={'Skills'} RealSection={'SKILL'} />
         <Section title={'Education'} RealSection={'EDU'}/>
-        <Section title={'Personal Projects'} /> 
-        <Section title={'Hobbies'} />
+        <Section title={'Languages'} RealSection={'LANG'}/> 
         <Section title={'Employment'} RealSection={'EMP'}/>
+        <Section title={'Hobbies'} />
         <Section title={'Certificates'} />
  </div>
 }

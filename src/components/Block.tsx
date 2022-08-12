@@ -11,8 +11,9 @@ level?: string,
 skill?:State,
 onDone?:Function,
 subtitle?:string,
+language?:State,
 }
-const Block: React.FC<Props> = ({title, level,value,skill,onDone}) => {
+const Block: React.FC<Props> = ({title, level,language,skill,onDone}) => {
   const [status, setStatus] = useState("set");
   const dispatch = useDispatch();
   const handleChangeStatus = (status:string) => {
@@ -22,6 +23,7 @@ const Block: React.FC<Props> = ({title, level,value,skill,onDone}) => {
     onDone!(ref,skill)
     setStatus('set');
   }
+  const editLanguage= () => {}
   if (status === "set") {
     return (
       <div className="flex w-11/12  h-[10vh] ml-auto mr-auto m-1 mt-1 items-center border border-gray-400 shadow-md rounded-sm">

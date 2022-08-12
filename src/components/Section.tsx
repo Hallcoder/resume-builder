@@ -6,6 +6,7 @@ import Bio from './Sections/Bio';
 import Skills from './Sections/Skills';
 import Education from './Sections/Education';
 import Employment from './Sections/Employment';
+import Languages from './Sections/Languages';
 
 interface Props{
 title:string,
@@ -48,6 +49,7 @@ return <div className="flex w-full flex-col justify-between  min-h-fit  border-b
      {RealSection && RealSection === 'SKILL' && <Skills />}
      {RealSection && RealSection === 'EDU' && <Education />}
      {RealSection && RealSection === 'EMP' && <Employment />}
+     {RealSection && RealSection === 'LANG' && <Languages />}
      </div>
 </div>
 }

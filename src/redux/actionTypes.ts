@@ -11,3 +11,4 @@ export const EDIT_SKILL:string = "editSkill";
 export const ADD_EDU:string = 'addedu';
 export const EDIT_EDU:string = 'editedu';
 export const SET_IMAGE:string = 'setimage';
+export const ADD_LANG:string = 'addlang';

@@ -47,6 +47,9 @@ import State from "./interfaces";
   case 'edit-education':
     dispatch(createAction(actions.EDIT_EDU,{edu:payLoad}));
     break;
+  case 'new-lang':
+    dispatch(createAction(actions.ADD_LANG,{lang:{id:Math.random().toString(),name:ref.current.value,fluency:'Native'}}));
+    break;
    default:
      break;
   }
