@@ -1,8 +1,12 @@
 import {Dispatch, RefObject } from "react";
 import * as actions from '../redux/actionTypes'
 import createAction from "../redux/actionCreators";
- const handleChange :(act: string,ref:RefObject<any>,dispatch:Dispatch<any>,payLoad?:Object)=> void = (act,ref:RefObject<any>,dispatch,payLoad) => {
+import State from "./interfaces";
+ const handleChange :(act: string,ref:RefObject<any>,dispatch:Dispatch<any>,payLoad?:State)=> void = (act,ref:RefObject<any>,dispatch,payLoad) => {
     switch (act) {
+   case 'image':
+    dispatch(createAction(actions.SET_IMAGE,{image:payLoad}));
+    break;
    case "names":
     dispatch(createAction(actions.SET_NAME,{names:ref.current.value}))
     break;

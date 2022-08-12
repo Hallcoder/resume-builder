@@ -1,11 +1,11 @@
 type skill = {id:string,title:string,level:string,newValue?:string}; 
 type education = {id:string,degree:string,school:string,city:string,startdate:string,enddate:string,description?:string}
 export default class State{
-    names?:string='s';
+    names?:string='your_name';
     familyName?:string;
-    address?:string ;
-    email?:string;
-    headLine?:string;
+    address?:string='your_address';
+    email?:string='email@address.com';
+    headLine?:string='role';
     phone?:string;
     linkedIn?:string;
     bio?:string;
@@ -13,6 +13,7 @@ export default class State{
     title?:string;
     edu?:education;
     skill?:skill;
+    image?:any;
     skills?:skill[]=[];
     educations?:education[] = []
 }

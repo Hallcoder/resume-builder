@@ -5,11 +5,12 @@ import  State  from '../utils/interfaces';
 import formatDate from '../utils/formatDate';
 const Template1: React.FC = () => { 
     const state:State | any  = useSelector(state => state);
+    const reader = new FileReader();
     console.log(state)
-    return <div className="relative h-full  flex flex-col rounded-md">
+    return <div className="relative h-full flex flex-col rounded-md">
         <header className="h-[15vh] rounded-t-md bg-[#303846]">
             <div className='flex h-full w-full text-white'>
-                <img src="" alt="" className='h-full bg-white w-2/12' />
+                <img src={state.image} alt="" className='h-full bg-white w-2/12' />
                 <div className='flex justify-around flex-col w-7/12'>
                  <h2>{state.names? state.names :'Mwenedata Apotre'}</h2>
                  <h6 className='text-sm text-gray-400'>{state.headLine? state.headLine:'HeadLine'}</h6>
@@ -21,13 +22,13 @@ const Template1: React.FC = () => {
                 </div>
             </div>
         </header>
-        <section className="flex w-full h-full">
+        <section className="flex w-full h-full text-xs">
             <main className='h-full w-8/12'>
                 <div className='h-fit flex flex-col border-b-2 w-11/12 m-auto'>
                 <h2 className='font-semibold m-1 text-sm'>{state.bio && 'Bio'}</h2> 
                 <p className='text-xs m-1'>{state.bio ? state.bio:''}</p>   
                 </div>
-                <div className='ml-1'>
+                <div className='w-11/12 m-auto'>
                 <h2 className='font-semibold text-sm m-1'>{state.educations.length !== 0 && 'Education'}</h2>
                     {state.educations.length !== 0 && state.educations.map(ed => {
                         return <div className='m-1 flex justify-around'>

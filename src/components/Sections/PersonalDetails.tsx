@@ -2,12 +2,26 @@
 import { useDispatch } from "react-redux";
 import Input from "../common/Input";
 import handleChange from "../../utils/handleChange";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import State from "./../../utils/interfaces";
 const PersonDetails = () => {
   const state: State | any = useSelector(state => state);
+  const [image,setimage] = useState();
+  const ref =  useRef();
   const dispatch = useDispatch();
+  const handleImageChange = (e:Event) => {
+    let file = e.target.files[0];
+    const reader  = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+        setimage(reader.result); 
+        
+  }
+}
+useEffect(() => {
+  handleChange('image',ref,dispatch,{image:image});
+},[image])
   const { nameRef, fnameRef, emailRef, phoneRef, addressRef, hRef, lRef } = {
     nameRef: useRef<HTMLInputElement>(null),
     fnameRef: useRef<HTMLInputElement>(null),
@@ -19,8 +33,12 @@ const PersonDetails = () => {
   };
   return (
     <div className=" h-fit w-full">
-      <div className="flex h-3/6 w-full ">
-        <img src="" alt="" className="h-full m-1 rounded-sm w-3/12 border" />
+      <div className="flex h-3/6 w-full">
+        <div className="w-3/12 border h-1/6">
+          <h1 className="text-xs">Photo</h1>
+          <label htmlFor="image" className="h-2/6 w-full hover:cursor-pointer"><img src={image} alt="prof " className="object-cover h-4/6 w-full" /></label>
+          <input type="file" id="image" className="hidden" onChange={handleImageChange}/>
+        </div>
         <div className="flex flex-col h-full w-full items-center">
           <div className="flex w-full h-3/6">
             <Input
