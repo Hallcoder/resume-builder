@@ -41,7 +41,7 @@ const EducationBlock: React.FC<Props> = ({title,id, subtitle,edu,emp}) => {
     );
   } else if (status === "edit") {
     return <div>
-    <Form name={'edit-edu'} edu={edu} emp={emp}  inputs={emp? emInputs:edInputs} id={id} onDone={handleEditEdu} />
+    <Form name={edu ? 'edit-edu':'edit-emp'} edu={edu} emp={emp}  inputs={emp? emInputs:edInputs} id={id} onDone={handleEditEdu} />
     </div>;
   } else {
     return <div>

@@ -10,6 +10,7 @@ import handleChange from "../utils/handleChange";
 import { useDispatch } from "react-redux";
 import { Dispatch } from 'react';
 import populate from "../utils/populate";
+import { GiConsoleController } from "react-icons/gi";
 interface Props {
   inputs: string[];
   name:string;
@@ -27,6 +28,20 @@ const Form: React.FC<Props> = ({name, inputs,onDone,edu,id,emp}) => {
     [inputs[4]]:'',
   })
   const dummyref = useRef();
+  const takeAction =(name:String) =>{
+     switch(name){
+      case 'new-edu':
+        return handleSubmitNewEdu;
+      case 'edit-edu':
+        return handleEditNewEdu;
+      case 'new-emp':
+        return handleSubmitNewEmp;
+      case 'edit-emp':
+        return handleEditNewEmp;
+      default:
+        return null;
+     }
+  }
   const Dispatch = useDispatch();
   if(edu){
     populate(useEffect,state,edu,setState);
@@ -44,9 +59,10 @@ const Form: React.FC<Props> = ({name, inputs,onDone,edu,id,emp}) => {
   onDone();
   }
   const handleEditNewEmp = () => {
-
+ console.log('I need to see this being called')
   }
   const handleSubmitNewEdu = () => {
+    console.log('new emp')
     handleChange('new-education',dummyref,Dispatch,state);
     onDone();
   }
@@ -76,7 +92,7 @@ const Form: React.FC<Props> = ({name, inputs,onDone,edu,id,emp}) => {
       <div className='h-[35vh]'>
         <h1 className='ml-6'>Description</h1>
         <Description name="ed"/>
-        <Done onDone={(name !=='edit-edu' ? handleSubmitNewEdu:handleEditNewEdu) || name !== 'edit-emp' ? handleSubmitNewEmp:handleEditNewEmp}/>
+        <Done onDone={takeAction(name)}/>
       </div>
     </div>
   );
