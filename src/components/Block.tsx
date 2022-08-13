@@ -12,8 +12,9 @@ skill?:State,
 onDone?:Function,
 subtitle?:string,
 language?:State,
+onDelete:Function,
 }
-const Block: React.FC<Props> = ({title, level,language,skill,onDone}) => {
+const Block: React.FC<Props> = ({title, level,onDelete,language,skill,onDone}) => {
   const [status, setStatus] = useState("set");
   const dispatch = useDispatch();
   const handleChangeStatus = (status:string) => {
@@ -41,7 +42,7 @@ const Block: React.FC<Props> = ({title, level,language,skill,onDone}) => {
     );
   } else if (status === "edit") {
     return <div>
-    <SkillAndLanguageForm name={!language ?'Skill':'Language'} value='' language={language} onDone={language ? editLanguage:editSkill} skill={skill}/>
+    <SkillAndLanguageForm name={!language ?'Skill':'Language'} onDelete={onDelete} value='' language={language} onDone={language ? editLanguage:editSkill} skill={skill}/>
     </div>;
   } else {
     return <div>

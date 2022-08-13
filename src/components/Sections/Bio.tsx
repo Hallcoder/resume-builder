@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { SetStateAction } from 'react';
 import Description from '../Description';
 
 
-const Bio:React.FC = () => {
+const Bio:React.FC<{set:SetStateAction<any>}> = ({set}) => {
+
     return <div className="h-full w-full">
-        <Description />
+        <Description set={set} />
     </div>
 }
 

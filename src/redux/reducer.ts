@@ -101,6 +101,31 @@ const reducer: (
       };
       currentState.employments = [...currentState.employments, validNewEmp];
       return currentState;
+    case actions.EDIT_EMP:
+      let emp = currentState.employments?.find(
+        em => em.id === action.payLoad.emp.id
+      );
+      let index2: number = currentState.employments.indexOf(emp);
+      if (emp) {
+        (emp.position = action.payLoad.emp["Position"]),
+          (emp.city = action.payLoad.emp["City"]),
+          (emp.enddate = action.payLoad.emp["End Date"].toString()),
+          (emp.startdate = action.payLoad.emp["Start Date"].toString()),
+          (emp.employer = action.payLoad.emp["Employer"]);
+        currentState.employments = [
+          ...currentState.employments.slice(0, index2),
+          emp,
+          ...currentState.employments.slice(index2 + 1),
+        ];
+        return currentState;
+      }
+      return currentState;
+    case actions.REMOVE_SKILL:
+      console.log('deleting skill');
+      let index3 = currentState.skills.indexOf(currentState.skills.find(sk => sk.id === action.payLoad.id));
+      console.log('Got it',index3);
+     currentState.skills = [...currentState.skills.slice(0,index3),...currentState.skills.slice(index3 + 1)];
+     return currentState;
     default:
       return state;
   }

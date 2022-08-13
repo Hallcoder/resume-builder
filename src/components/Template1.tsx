@@ -41,6 +41,20 @@ const Template1: React.FC = () => {
                         </div>
                     })}
                 </div>
+                <div className='w-11/12 m-auto border-b'>
+                <h2 className='font-bold text-sm m-1'>{state.employments.length !== 0 && 'Employment'}</h2>
+                    {state.employments.length !== 0 && state.employments.map(emp => {
+                        return <div className='m-1 flex justify-around'>
+                            <div className='flex flex-col w-4/12'>
+                                <h3 className='font-semibold'>{emp.position}</h3>
+                                <h4 className='text-xs text-gray-500'>{emp.employer}</h4>
+                            </div>
+                            <div className='w-8/12 flex justify-end'>
+                               <h3 className='text-xs'>{formatDate(emp.startdate)} - {formatDate(emp.enddate)}</h3>
+                            </div>
+                        </div>
+                    })}
+                </div>
                
             </main>
             <aside className='flex flex-col h-full w-4/12 border-l border'>

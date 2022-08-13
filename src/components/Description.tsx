@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { SetStateAction, useRef, useState } from "react";
 import {
   MdFormatBold,
   MdFormatItalic,
@@ -9,14 +9,19 @@ import {
 import { AiOutlineOrderedList } from "react-icons/ai";
 import handleChange from "../utils/handleChange";
 import { useDispatch } from "react-redux";
+import Done from "./Done";
 type props ={
 name?:string,
+set?:SetStateAction<any>,
 }
-const Description: React.FC<props> = ({name}) => {
+const Description: React.FC<props> = ({name,set}) => {
   const textRef = useRef<HTMLTextAreaElement>(null);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const hideForm = () => {
+    set({display:'none'})
+  }
   return (
-    <div className="flex flex-col border border-black m-auto w-11/12 h-4/6 rounded-md">
+    <div  className="flex flex-col border border-black m-auto w-11/12 h-4/6 rounded-md">
       <div className="h-5/6 border-b-2 border-gray-500">
         <textarea
           name="description"
@@ -36,6 +41,7 @@ const Description: React.FC<props> = ({name}) => {
         <MdOutlineFormatListBulleted />
         <MdOutlineMenu />
       </div>
+      {set && <Done onDone={hideForm}/>}
     </div>
   );
 };

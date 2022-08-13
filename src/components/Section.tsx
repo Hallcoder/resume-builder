@@ -45,7 +45,7 @@ return <div className="flex w-full flex-col justify-between  min-h-fit  border-b
      </div>
      <div style={styles} className={classAccording}>
      {RealSection && RealSection === 'PD' && <PersonDetails />}
-     {RealSection && RealSection === 'BIO' && <Bio />}
+     {RealSection && RealSection === 'BIO' && <Bio set={setStyles}/>}
      {RealSection && RealSection === 'SKILL' && <Skills />}
      {RealSection && RealSection === 'EDU' && <Education />}
      {RealSection && RealSection === 'EMP' && <Employment />}

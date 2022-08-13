@@ -103,6 +103,12 @@ const handleChange: (
         )
       );
     break;
+    case 'edit-employment':
+      dispatch(createAction(actions.EDIT_EMP, { emp: payLoad }));
+      break;
+    case 'delete-skill':
+      dispatch(createAction(actions.REMOVE_SKILL,{id:payLoad.id}))
+    break;
     default:
       break;
   }

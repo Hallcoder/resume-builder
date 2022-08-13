@@ -13,4 +13,9 @@ export const EDIT_EDU:string = 'editedu';
 export const SET_IMAGE:string = 'setimage';
 export const ADD_LANG:string = 'addlang';
 export const EDIT_LANG:string = 'editlang';
+export const EDIT_EMP:string = 'editemp';
 export const ADD_EMP:string = 'addemp';
+export const REMOVE_SKILL:string = 'removeskill';
+export const REMOVE_EDU:string = 'removeeducation';
+export const REMOVE_EMP:string = 'removeemployment';
+

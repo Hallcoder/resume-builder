@@ -59,10 +59,10 @@ const Form: React.FC<Props> = ({name, inputs,onDone,edu,id,emp}) => {
   onDone();
   }
   const handleEditNewEmp = () => {
- console.log('I need to see this being called')
+    handleChange('edit-employment',dummyref,Dispatch,{id:id,...state});
+    onDone();
   }
   const handleSubmitNewEdu = () => {
-    console.log('new emp')
     handleChange('new-education',dummyref,Dispatch,state);
     onDone();
   }

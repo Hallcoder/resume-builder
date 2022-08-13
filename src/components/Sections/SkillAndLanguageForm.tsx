@@ -11,9 +11,10 @@ interface Props {
   onDone?: Function;
   value:string,
   language?:Object,
+  onDelete:Function;
   skill?:{id:string,title:string,level:string,newValue?:string};
 }
-const SkillAndLanguageForm: React.FC<Props> = ({name, onDone,language,skill}) => {
+const SkillAndLanguageForm: React.FC<Props> = ({name,onDelete,onDone,language,skill}) => {
   const dispatch = useDispatch();
   const [InputValue,setValue] = useState('')
   const handleLocalChange = (ref:any) => {
@@ -44,7 +45,7 @@ const SkillAndLanguageForm: React.FC<Props> = ({name, onDone,language,skill}) =>
         </div>
         <span className="text-xs m-1">Make a choice</span>
       </div>
-      <Done onDone={onDone} refr={ref} language={language} skill={skill}/>
+      <Done onDone={onDone} onDelete={onDelete} refr={ref} language={language} skill={skill}/>
     </div>
   );
 };
