@@ -16,12 +16,37 @@ interface Props {
 }
 const SkillAndLanguageForm: React.FC<Props> = ({name,onDelete,onDone,language,skill}) => {
   const dispatch = useDispatch();
-  const [InputValue,setValue] = useState('')
+  const [InputValue,setValue] = useState('');
+  const [sliderValue,setSliderValue] = useState<number>(0);
+  const [sliderLevel,setLevel] = useState('Make a choice')
   const handleLocalChange = (ref:any) => {
    setValue(ref.current.value);
   }
+  const handleSliderChange = (e) => {
+     setSliderValue(e.target.value);
+  }
   const formRef = useRef<any>(null);
   const ref = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+       if(sliderValue === 20){
+         setLevel('Beginner')
+       } 
+       if(sliderValue === 0){
+        setLevel('Make a level choice');
+       }
+       if(sliderValue === 40){
+         setLevel('Good')
+       } 
+       if(sliderValue === 60){
+         setLevel('Moderate')
+       } 
+       if(sliderValue === 80){
+         setLevel('Very Good')
+       } 
+       if(sliderValue === 100){
+         setLevel('Excellent')
+       } 
+  },[sliderValue])
   useEffect(() => {
        if(skill) setValue(skill!.title);
        if(language) setValue(language.name);
@@ -41,9 +66,9 @@ const SkillAndLanguageForm: React.FC<Props> = ({name,onDelete,onDone,language,sk
       <h1 className="text-sm ml-6 text-gray-500">Level</h1>
       <div className="flex m-auto w-11/12">
         <div className="w-10/12 flex items-center">
-          <Slider step={20} />
+          <Slider step={20} value={sliderValue} onChange={handleSliderChange} />
         </div>
-        <span className="text-xs m-1">Make a choice</span>
+        <span className="text-xs m-1">{sliderLevel}</span>
       </div>
       <Done onDone={onDone} onDelete={onDelete} refr={ref} language={language} skill={skill}/>
     </div>
