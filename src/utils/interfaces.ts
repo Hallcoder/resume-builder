@@ -1,5 +1,5 @@
 type skill = {id:string,title:string,level:string,step?:number}; 
-type langs = {id:string,name:string,fluency:string};
+type langs = {id:string,name:string,fluency:string,step?:number};
 type emp = {id:string,position:string,employer:string,city:string,startdate:string,enddate:string};
 type education = {id:string,degree:string,school:string,city:string,startdate:string,enddate:string,description?:string}
 export default class State{

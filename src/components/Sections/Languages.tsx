@@ -17,8 +17,10 @@ const Languages: React.FC = () => {
        (addRef.current!as HTMLDivElement).style.display = 'block';
        handleChange('new-lang',ref,dispatch);
   }
-  const handleEditLanguage = (ref:RefObject<HTMLInputElement>,lang:Object) => {
+  const handleEditLanguage = (ref:RefObject<HTMLInputElement>,lang:{id:string,name:string,fluency:string,step?:number},slider) => {
     setStyles({display:'none'});
+    lang.fluency = slider.level;
+    lang.step = slider.step;
     (addRef.current!as HTMLDivElement).style.display = 'block';
     handleChange('edit-language',ref,dispatch,lang);
   }
@@ -48,7 +50,7 @@ const Languages: React.FC = () => {
         <MdAdd onClick={handleDisplayForm} /> Add Skill
       </div>
       <div style={styles}>
-         <SkillAndLanguageForm name='language' onDelete={handleDelete} onDone={handleAddNewLanguage} value=''/> 
+         <SkillAndLanguageForm name='Language' onDelete={handleDelete} onDone={handleAddNewLanguage} value=''/> 
       </div>
     </div>
   );

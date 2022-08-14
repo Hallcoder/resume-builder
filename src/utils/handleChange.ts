@@ -62,7 +62,6 @@ const handleChange: (
         createAction(actions.EDIT_SKILL, {
           skill: payLoad,
           title: ref.current.value,
-          level: "Experienced",
         })
       );
       break;

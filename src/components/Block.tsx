@@ -24,8 +24,8 @@ const Block: React.FC<Props> = ({title, level,onDelete,language,skill,onDone}) =
     onDone!(ref,skill,slider)
     setStatus('set');
   }
-  const editLanguage= (ref:RefObject<HTMLInputElement>,language:Object) => {
-  onDone!(ref,language);
+  const editLanguage= (ref:RefObject<HTMLInputElement>,language:Object,slider:any) => {
+  onDone!(ref,language,slider);
   setStatus('set');
   }
   if (status === "set") {

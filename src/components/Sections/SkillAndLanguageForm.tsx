@@ -1,61 +1,93 @@
- // @ts-nocheck
+// @ts-nocheck
 import { Slider } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import Input from "../common/Input";
 import Done from "../Done";
 import { useDispatch, useSelector } from "react-redux";
 import handleChange from "../../utils/handleChange";
-import State from './../../utils/interfaces';
+import State from "./../../utils/interfaces";
 interface Props {
   name: string;
   onDone?: Function;
-  value:string,
-  language?:Object,
-  onDelete:Function;
-  skill?:{id:string,title:string,level:string,newValue?:string};
+  value: string;
+  language?: Object;
+  onDelete: Function;
+  skill?: { id: string; title: string; level: string; newValue?: string };
 }
-const SkillAndLanguageForm: React.FC<Props> = ({name,onDelete,onDone,language,skill}) => {
+const SkillAndLanguageForm: React.FC<Props> = ({
+  name,
+  onDelete,
+  onDone,
+  language,
+  skill,
+}) => {
   const dispatch = useDispatch();
-  const [InputValue,setValue] = useState('');
-  const [sliderValue,setSliderValue] = useState<number>(0);
-  const [sliderLevel,setLevel] = useState('Make a choice')
-  const handleLocalChange = (ref:any) => {
-   setValue(ref.current.value);
-  }
-  const handleSliderChange = (e) => {
-     setSliderValue(e.target.value);
-  }
+  const [InputValue, setValue] = useState("");
+  const [sliderValue, setSliderValue] = useState<number>(0);
+  const [sliderLevel, setLevel] = useState("Make a choice");
+  const handleLocalChange = (ref: any) => {
+    setValue(ref.current.value);
+  };
+  const handleSliderChange = e => {
+    setSliderValue(e.target.value);
+  };
   const formRef = useRef<any>(null);
   const ref = useRef<HTMLInputElement>(null);
   useEffect(() => {
-       if(sliderValue === 20){
-         setLevel('Beginner')
-       } 
-       if(sliderValue === 0){
-        setLevel('Make a level choice');
-       }
-       if(sliderValue === 40){
-         setLevel('Good')
-       } 
-       if(sliderValue === 60){
-         setLevel('Moderate')
-       } 
-       if(sliderValue === 80){
-         setLevel('Very Good')
-       } 
-       if(sliderValue === 100){
-         setLevel('Excellent')
-       } 
-  },[sliderValue])
+    if(name === 'Skill'){
+      if (sliderValue === 0) {
+        setLevel("Make a level choice");
+      }
+      if (sliderValue === 20) {
+        setLevel("Beginner");
+      }
+      if (sliderValue === 40) {
+        setLevel("Moderate");
+      }
+      if (sliderValue === 60) {
+        setLevel("Good");
+      }
+      if (sliderValue === 80) {
+        setLevel("Very Good");
+      }
+      if (sliderValue === 100) {
+        setLevel("Excellent");
+      }
+    }
+    if(name === 'Language'){
+      if (sliderValue === 0) {
+        setLevel("Make a level choice");
+      }
+      if (sliderValue === 20) {
+        setLevel("Beginner");
+      }
+      if (sliderValue === 40) {
+        setLevel("Moderate");
+      }
+      if (sliderValue === 60) {
+        setLevel("Good");
+      }
+      if (sliderValue === 80) {
+        setLevel("Very Good");
+      }
+      if (sliderValue === 100) {
+        setLevel("Fluent");
+      }
+    }
+    
+  }, [sliderValue]);
   useEffect(() => {
-       if(skill){
-        setValue(skill!.title);
-        setSliderValue(skill!.step);
-       } 
-       if(language) setValue(language.name);
-  },[])
+    if (skill) {
+      setValue(skill!.title);
+      setSliderValue(skill!.step);
+    }
+    if (language) setValue(language.name);
+  }, []);
   return (
-    <div ref={formRef} className="flex flex-col h-3/6 mr-auto ml-auto m-1 mt-2 w-11/12 border rounded-md">
+    <div
+      ref={formRef}
+      className="flex flex-col h-3/6 mr-auto ml-auto m-1 mt-2 w-11/12 border rounded-md"
+    >
       <div className="flex flex-col">
         <h1 className="text-sm text-gray-500 ml-6">{name}</h1>
         <Input
@@ -73,7 +105,14 @@ const SkillAndLanguageForm: React.FC<Props> = ({name,onDelete,onDone,language,sk
         </div>
         <span className="text-xs m-1">{sliderLevel}</span>
       </div>
-      <Done onDone={onDone} onDelete={onDelete} refr={ref} slider={{value:sliderValue,level:sliderLevel}} language={language} skill={skill}/>
+      <Done
+        onDone={onDone}
+        onDelete={onDelete}
+        refr={ref}
+        slider={{ value: sliderValue, level: sliderLevel }}
+        language={language}
+        skill={skill}
+      />
     </div>
   );
 };

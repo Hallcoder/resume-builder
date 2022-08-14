@@ -43,8 +43,16 @@ const reducer: (
       let skill = currentState.skills?.find(
         sk => sk.id === action.payLoad.skill!.id
       );
+      index =  currentState.skills.indexOf(skill);
       if (skill) {
         skill!.title = action.payLoad.title;
+        skill!.level = action.payLoad.skill.level;
+        skill!.step = action.payLoad.skill.step;
+        currentState.skills = [
+          ...currentState.skills.slice(0, index),
+          skill,
+          ...currentState.skills.slice(index + 1),
+        ];
         return currentState;
       }
       return currentState;
@@ -86,8 +94,16 @@ const reducer: (
       let lang = currentState.languages?.find(
         lan => lan.id === action.payLoad.lang!.id
       );
+      index = currentState.languages.indexOf(lang);
       if (lang) {
         lang!.name = action.payLoad.name;
+        lang.fluency = action.payLoad.lang.fluency;
+        lang.step = action.payLoad.lang.step;
+        currentState.languages = [
+          ...currentState.languages.slice(0, index),
+          lang,
+          ...currentState.languages.slice(index + 1),
+        ];
         return currentState;
       }
       return currentState;
