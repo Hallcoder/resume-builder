@@ -18,4 +18,5 @@ export const ADD_EMP:string = 'addemp';
 export const REMOVE_SKILL:string = 'removeskill';
 export const REMOVE_EDU:string = 'removeeducation';
 export const REMOVE_EMP:string = 'removeemployment';
+export const REMOVE_LANG:string = 'removelanguage';
 

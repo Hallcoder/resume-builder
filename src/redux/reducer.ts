@@ -7,6 +7,7 @@ const reducer: (
   action: { type: string; payLoad: State }
 ) => State = (state: State = new State(), action) => {
   let currentState: State = { ...state };
+  let index:number;
   switch (action.type) {
     case actions.SET_IMAGE:
       currentState.image = action.payLoad.image.image;
@@ -62,7 +63,7 @@ const reducer: (
       let edu = currentState.educations?.find(
         ed => ed.id === action.payLoad.edu.id
       );
-      let index: number = currentState.educations.indexOf(edu);
+       index = currentState.educations.indexOf(edu);
       if (edu) {
         (edu.degree = action.payLoad.edu["Degree"]),
           (edu.city = action.payLoad.edu["City"]),
@@ -105,7 +106,7 @@ const reducer: (
       let emp = currentState.employments?.find(
         em => em.id === action.payLoad.emp.id
       );
-      let index2: number = currentState.employments.indexOf(emp);
+     index = currentState.employments.indexOf(emp);
       if (emp) {
         (emp.position = action.payLoad.emp["Position"]),
           (emp.city = action.payLoad.emp["City"]),
@@ -113,19 +114,37 @@ const reducer: (
           (emp.startdate = action.payLoad.emp["Start Date"].toString()),
           (emp.employer = action.payLoad.emp["Employer"]);
         currentState.employments = [
-          ...currentState.employments.slice(0, index2),
+          ...currentState.employments.slice(0, index),
           emp,
-          ...currentState.employments.slice(index2 + 1),
+          ...currentState.employments.slice(index + 1),
         ];
         return currentState;
       }
       return currentState;
     case actions.REMOVE_SKILL:
       console.log('deleting skill');
-      let index3 = currentState.skills.indexOf(currentState.skills.find(sk => sk.id === action.payLoad.id));
-      console.log('Got it',index3);
-     currentState.skills = [...currentState.skills.slice(0,index3),...currentState.skills.slice(index3 + 1)];
+       index = currentState.skills.indexOf(currentState.skills.find(sk => sk.id === action.payLoad.id));
+      console.log('Got it',index);
+     currentState.skills = [...currentState.skills.slice(0,index),...currentState.skills.slice(index + 1)];
      return currentState;
+    case actions.REMOVE_EDU:
+      console.log('deleting edu');
+     index = currentState.educations.indexOf(currentState.educations.find(ed => ed.id === action.payLoad.id));
+      console.log('Got it',index);
+     currentState.educations = [...currentState.educations.slice(0,index),...currentState.educations.slice(index + 1)];
+     return currentState;
+     case actions.REMOVE_LANG:
+      console.log('deleting education  in reducer');
+      index = currentState.languages.indexOf(currentState.languages.find(lang => lang.id === action.payLoad.id));
+     console.log('Got it',index);
+    currentState.languages = [...currentState.languages.slice(0,index),...currentState.languages.slice(index + 1)];
+    return currentState;
+    case actions.REMOVE_EMP:
+      console.log('deleting employment');
+      index = currentState.employments.indexOf(currentState.employments.find(emp => emp.id === action.payLoad.id));
+     console.log('Got it',index);
+    currentState.employments = [...currentState.employments.slice(0,index),...currentState.employments.slice(index + 1)];
+    return currentState;
     default:
       return state;
   }

@@ -68,10 +68,10 @@ const handleChange: (
       break;
     case "new-education":
       dispatch(
-        createAction(
-          actions.ADD_EDU,
-          { id: Math.random().toString(), edu: payLoad }
-        )
+        createAction(actions.ADD_EDU, {
+          id: Math.random().toString(),
+          edu: payLoad,
+        })
       );
       break;
     case "edit-education":
@@ -89,26 +89,36 @@ const handleChange: (
       );
       break;
     case "edit-language":
-      dispatch( createAction(actions.EDIT_LANG, {
-        lang: payLoad,
-        name: ref.current.value,
-      })
+      dispatch(
+        createAction(actions.EDIT_LANG, {
+          lang: payLoad,
+          name: ref.current.value,
+        })
       );
       break;
-    case 'new-employment':
+    case "new-employment":
       dispatch(
-        createAction(
-          actions.ADD_EMP,
-          { id: Math.random().toString(), emp: payLoad }
-        )
+        createAction(actions.ADD_EMP, {
+          id: Math.random().toString(),
+          emp: payLoad,
+        })
       );
-    break;
-    case 'edit-employment':
+      break;
+    case "edit-employment":
       dispatch(createAction(actions.EDIT_EMP, { emp: payLoad }));
       break;
-    case 'delete-skill':
-      dispatch(createAction(actions.REMOVE_SKILL,{id:payLoad.id}))
-    break;
+    case "delete-skill":
+      dispatch(createAction(actions.REMOVE_SKILL, { id: payLoad.id }));
+      break;
+    case "delete-education":
+      dispatch(createAction(actions.REMOVE_EDU, { id: payLoad.id }));
+      break;
+    case "delete-language":
+      dispatch(createAction(actions.REMOVE_LANG, { id: payLoad.id }));
+      break;
+    case "delete-employment":
+      dispatch(createAction(actions.REMOVE_EMP,{id:payLoad.id}))
+      break;
     default:
       break;
   }

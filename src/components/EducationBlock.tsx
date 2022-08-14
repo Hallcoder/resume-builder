@@ -14,9 +14,10 @@ onDone?:Function,
 subtitle?:string,
 id?:string,
 emp?:Object,
+onDelete:Function,
 edu?:{id:string,degree:string,school:string,city:string,startdate:string,enddate:string,description:string},
 }
-const EducationBlock: React.FC<Props> = ({title,id, subtitle,edu,emp}) => {
+const EducationBlock: React.FC<Props> = ({title,id,onDelete,subtitle,edu,emp}) => {
   const [status, setStatus] = useState("set");
   const edInputs:string [] = ['Degree','School','City','Start Date','End Date','Descripion'];
   const emInputs:string [] = ['Position','Employer','City','Start Date','End Date','Descripion'];
@@ -41,7 +42,7 @@ const EducationBlock: React.FC<Props> = ({title,id, subtitle,edu,emp}) => {
     );
   } else if (status === "edit") {
     return <div>
-    <Form name={edu ? 'edit-edu':'edit-emp'} edu={edu} emp={emp}  inputs={emp? emInputs:edInputs} id={id} onDone={handleEditEdu} />
+    <Form name={edu ? 'edit-edu':'edit-emp'} onDelete={onDelete} edu={edu} emp={emp}  inputs={emp? emInputs:edInputs} id={id} onDone={handleEditEdu} />
     </div>;
   } else {
     return <div>

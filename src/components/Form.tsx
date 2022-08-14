@@ -16,10 +16,11 @@ interface Props {
   name:string;
   onDone?:Function;
   id?:string,
+  onDelete:Function,
   emp?:Object,
   edu?:{id:string,degree:string,school:string,city:string,startdate:string,enddate:string,description:string};
 }
-const Form: React.FC<Props> = ({name, inputs,onDone,edu,id,emp}) => {
+const Form: React.FC<Props> = ({name,onDelete, inputs,onDone,edu,id,emp}) => {
   const [state,setState] = useState({
     [inputs[0]]:'',
     [inputs[1]]:'',
@@ -92,7 +93,7 @@ const Form: React.FC<Props> = ({name, inputs,onDone,edu,id,emp}) => {
       <div className='h-[35vh]'>
         <h1 className='ml-6'>Description</h1>
         <Description name="ed"/>
-        <Done onDone={takeAction(name)}/>
+        <Done inForm={true} edu={edu} emp={emp} onDone={takeAction(name)} onDelete={onDelete}/>
       </div>
     </div>
   );

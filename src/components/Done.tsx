@@ -1,17 +1,73 @@
-import React, { RefObject } from 'react';
-import { MdDeleteForever } from 'react-icons/md';
-interface Props{
-    onDone:Function;
-    skill?:{id:string,title:string,level:string}; 
-    language?:Object;
-    refr?:RefObject<HTMLInputElement>;
-    formRef?:RefObject<HTMLInputElement>;
-    onDelete:(id?:string,status?:string) => void;
+import React, { RefObject } from "react";
+import { MdDeleteForever } from "react-icons/md";
+import State from "./../utils/interfaces";
+interface Props {
+  onDone: Function;
+  skill?: { id: string; title: string; level: string };
+  language?: { id: string; name: string; fluency: string };
+  refr?: RefObject<HTMLInputElement>;
+  formRef?: RefObject<HTMLInputElement>;
+  inForm?: boolean;
+  emp?: {
+    id: string;
+    position: string;
+    employer: string;
+    city: string;
+    startdate: string;
+    enddate: string;
+    description: string;
+  };
+  edu?: {
+    id: string;
+    degree: string;
+    school: string;
+    city: string;
+    startdate: string;
+    enddate: string;
+    description: string;
+  };
+  onDelete: (id?: string, status?: string) => void;
 }
-const Done:React.FC<Props> = ({onDone,refr,skill,onDelete,language}) => {
-    return <div className='w-11/12 flex justify-end items-center'>
-    <MdDeleteForever className="text-2xl hover:cursor-pointer" onClick={skill? () => onDelete('saved',skill.id):() => onDelete('pending')}/>
-    <button className="h-8 bg-blue-700 w-1/12 text-white rounded-md m-1" onClick={skill? () => onDone(refr,skill):() => onDone(refr,language)}>Done</button>
-   </div>
-}
+const Done: React.FC<Props> = ({
+  onDone,
+  refr,
+  edu,
+  skill,
+  onDelete,
+  inForm,
+  emp,
+  language,
+}) => {
+  const chooseAction = () => {
+    if (!inForm && skill) {
+      return skill
+        ? () => onDelete("saved", skill.id)
+        : () => onDelete("pending");
+    } else if (!inForm && language) {
+      return language
+        ? () => onDelete("saved", language.id)
+        : () => onDelete("pending");
+    } else if (inForm && edu) {
+      return edu ? () => onDelete("saved", edu.id) : () => onDelete("pending");
+    } else if (inForm && emp) {
+      return emp ? () => onDelete("saved", emp.id) : () => onDelete("pending");
+    }
+  };
+  return (
+    <div className="w-11/12 flex justify-end items-center">
+      <MdDeleteForever
+        className="text-2xl hover:cursor-pointer"
+        onClick={chooseAction()}
+      />
+      <button
+        className="h-8 bg-blue-700 w-1/12 text-white rounded-md m-1"
+        onClick={
+          skill ? () => onDone(refr, skill) : () => onDone(refr, language)
+        }
+      >
+        Done
+      </button>
+    </div>
+  );
+};
 export default Done;
