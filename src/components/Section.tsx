@@ -36,11 +36,11 @@ const Section:React.FC<Props> = ({title,RealSection}) => {
      }
    },[])
 return <div className="flex w-full flex-col justify-between  min-h-fit  border-b-2 items-center">
-     <div className="w-full p-5 h-full flex justify-between items-center">
+     <div className="w-full p-7 h-full flex justify-between items-center">
           <h3 className="font-semibold text-lg m-1">{title}</h3>
           <div className="flex items-center">
-               <HiOutlineDotsVertical className="text-3xl m-2 p-1 border rounded-md hover:border-blue-300"/>
-               <MdKeyboardArrowDown className='text-3xl  border rounded-md ' onClick={handleDisplay} />
+               <HiOutlineDotsVertical style={styles} className="text-3xl m-2 p-1 border rounded-md hover:border-blue-800"/>
+               <MdKeyboardArrowDown className='text-3xl  border hover:border-blue-800  rounded-md ' onClick={handleDisplay} />
           </div>
      </div>
      <div style={styles} className={classAccording}>

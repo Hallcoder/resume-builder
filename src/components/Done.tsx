@@ -39,7 +39,6 @@ const Done: React.FC<Props> = ({
   emp,
   language,
 }) => {
-  console.log('Slider in Done:',slider)
   const chooseAction:() => MouseEventHandler = () => {
     if (!inForm) {
       if(skill){

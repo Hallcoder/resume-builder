@@ -5,6 +5,9 @@
     ::-webkit-scrollbar{
         display:;
     }
+*{
+  font-family: 'Mukta', sans-serif;
+}
     progress::-webkit-progress-bar {
   background-color: white;
   color: red;
