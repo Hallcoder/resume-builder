@@ -48,7 +48,10 @@ const SkillAndLanguageForm: React.FC<Props> = ({name,onDelete,onDone,language,sk
        } 
   },[sliderValue])
   useEffect(() => {
-       if(skill) setValue(skill!.title);
+       if(skill){
+        setValue(skill!.title);
+        setSliderValue(skill!.step);
+       } 
        if(language) setValue(language.name);
   },[])
   return (
@@ -70,7 +73,7 @@ const SkillAndLanguageForm: React.FC<Props> = ({name,onDelete,onDone,language,sk
         </div>
         <span className="text-xs m-1">{sliderLevel}</span>
       </div>
-      <Done onDone={onDone} onDelete={onDelete} refr={ref} language={language} skill={skill}/>
+      <Done onDone={onDone} onDelete={onDelete} refr={ref} slider={{value:sliderValue,level:sliderLevel}} language={language} skill={skill}/>
     </div>
   );
 };

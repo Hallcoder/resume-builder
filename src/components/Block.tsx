@@ -20,8 +20,8 @@ const Block: React.FC<Props> = ({title, level,onDelete,language,skill,onDone}) =
   const handleChangeStatus = (status:string) => {
     setStatus(status)
   }
-  const editSkill = (ref:RefObject<HTMLInputElement>,skill:Object) => {
-    onDone!(ref,skill)
+  const editSkill = (ref:RefObject<HTMLInputElement>,skill:Object,slider:any) => {
+    onDone!(ref,skill,slider)
     setStatus('set');
   }
   const editLanguage= (ref:RefObject<HTMLInputElement>,language:Object) => {

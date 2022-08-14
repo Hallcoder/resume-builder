@@ -11,13 +11,16 @@ const Skills: React.FC = () => {
   const dummyRef = useRef();
   const skills:{id:string,title:string,level:string}[]= useSelector(state => (state as any).skills!);
   const [changingValue,setChangingValue] = useState('');
-  const handleAddNewSkill = (ref:RefObject<HTMLInputElement>) => {
+  const handleAddNewSkill = (ref:RefObject<HTMLInputElement>,skill:any,slider:any) => {
+    console.log('slider:',slider)
        setStyles({display:'none'});
        (addRef.current!as HTMLDivElement).style.display = 'block';
-       handleChange('new-skill',ref,dispatch);
+       handleChange('new-skill',ref,dispatch,slider);
   }
-  const handleEditSkill = (ref:RefObject<HTMLInputElement>,skill:Object) => {
+  const handleEditSkill = (ref:RefObject<HTMLInputElement>,skill:{id:string,title:string,level:string,step?:number},slider:any) => {
     setStyles({display:'none'});
+    skill.level = slider.level;
+    skill.step = slider.value;
     (addRef.current!as HTMLDivElement).style.display = 'block';
     handleChange('edit-skill',ref,dispatch,skill);
   }
@@ -35,7 +38,7 @@ const Skills: React.FC = () => {
      return;
     }
   }
-  const addRef = useRef<HTMLDivElement>(null)
+  const addRef = useRef<HTMLDivElement>(null);
   return (
     <div className="w-full h-full min-h-fit">
      {skills?.map(skill => {

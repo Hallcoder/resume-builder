@@ -1,6 +1,5 @@
 import React, { MouseEventHandler, RefObject } from "react";
 import { MdDeleteForever } from "react-icons/md";
-import State from "./../utils/interfaces";
 interface Props {
   onDone: Function;
   skill?: { id: string; title: string; level: string };
@@ -26,6 +25,7 @@ interface Props {
     enddate: string;
     description: string;
   };
+  slider:{value:number,level:string},
   onDelete: (id?: string, status?: string) => void;
 }
 const Done: React.FC<Props> = ({
@@ -35,9 +35,11 @@ const Done: React.FC<Props> = ({
   skill,
   onDelete,
   inForm,
+  slider,
   emp,
   language,
 }) => {
+  console.log('Slider in Done:',slider)
   const chooseAction:() => MouseEventHandler = () => {
     if (!inForm) {
       if(skill){
@@ -64,7 +66,7 @@ const Done: React.FC<Props> = ({
       <button
         className="h-8 bg-blue-700 w-1/12 text-white rounded-md m-1"
         onClick={
-          skill ? () => onDone(refr, skill) : () => onDone(refr, language)
+          skill ? () => onDone(refr, skill,slider) : () => onDone(refr, language,slider)
         }
       >
         Done

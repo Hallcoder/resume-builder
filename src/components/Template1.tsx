@@ -70,7 +70,7 @@ const Template1: React.FC = () => {
                     {state.skills.length !== 0 && state.skills.map(skill => {
                         return <div className='h-1/6'>
                             <h3 className='text-xs text-gray-500'>{skill.title}</h3>
-                            <progress value='75' max='100'></progress>
+                            <progress value={skill.step} max='100'></progress>
                         </div>
                     })}
                 </div>
