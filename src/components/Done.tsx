@@ -39,19 +39,20 @@ const Done: React.FC<Props> = ({
   language,
 }) => {
   const chooseAction:() => MouseEventHandler = () => {
-    if (!inForm && skill) {
-      return skill
-        ? () => onDelete("saved", skill.id)
-        : () => onDelete("pending");
-    } else if (!inForm && language) {
-      return language
-        ? () => onDelete("saved", language.id)
-        : () => onDelete("pending");
-    } else if (inForm && edu) {
-      return edu ? () => onDelete("saved", edu.id) : () => onDelete("pending");
-    } else if (inForm && emp) {
-      console.log('We are in done and going to delete emp')
-      return emp ? () => onDelete("saved", emp.id) : () => onDelete("pending");
+    if (!inForm) {
+      if(skill){
+         return  () => onDelete("saved", skill.id);
+      }else if(language){
+        return () => onDelete("saved", language.id);
+      }
+      return () => onDelete("pending");
+    }  else if (inForm) {
+      if(edu){
+        return  () => onDelete("saved", edu.id);
+     }else if(emp){
+       return () => onDelete("saved", emp.id);
+     }
+     return () => onDelete("pending");
     }
   };
   return (
