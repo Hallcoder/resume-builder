@@ -1,4 +1,4 @@
-import React, { RefObject } from "react";
+import React, { MouseEventHandler, RefObject } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import State from "./../utils/interfaces";
 interface Props {
@@ -38,7 +38,7 @@ const Done: React.FC<Props> = ({
   emp,
   language,
 }) => {
-  const chooseAction = () => {
+  const chooseAction:() => MouseEventHandler = () => {
     if (!inForm && skill) {
       return skill
         ? () => onDelete("saved", skill.id)
@@ -50,6 +50,7 @@ const Done: React.FC<Props> = ({
     } else if (inForm && edu) {
       return edu ? () => onDelete("saved", edu.id) : () => onDelete("pending");
     } else if (inForm && emp) {
+      console.log('We are in done and going to delete emp')
       return emp ? () => onDelete("saved", emp.id) : () => onDelete("pending");
     }
   };

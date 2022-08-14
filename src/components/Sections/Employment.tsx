@@ -23,6 +23,7 @@ const Employment:React.FC = () => {
     setStyles({display:'none'});
   }
   const handleDelete = (status:string,id?:string) => {
+    console.log('deleting employment')
     if(status === 'saved'){
      Delete('employment',dummRef,dispatch,id);
     }else{
@@ -40,7 +41,7 @@ return <div className="w-full">
         <MdAdd onClick={handleDisplayForm} /> Add Education
       </div>
       <div style={styles}>
-         <Form name='new-emp'   onDelete={handleDelete} inputs={emInputs} onDone={handleAddNewEmployment}/> 
+         <Form name='new-emp'  onDelete={handleDelete} inputs={emInputs} onDone={handleAddNewEmployment}/> 
       </div>
 </div>
 }
