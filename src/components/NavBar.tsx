@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
 const NavBar:React.FC = () => {
-return <div className="flex top-0 fixed bg-white w-full h-[6h] justify-around">
+    const addBoxShadow = ()=>{
+        document.getElementById('nav').style.boxShadow = '1px 1px 4px black';
+   };
+    // if(document.getElementById('nav').style.position)
+    useEffect(()=>{
+     document.addEventListener('scroll', addBoxShadow)
+     return () => document.removeEventListener('scroll', addBoxShadow) ;
+    },[])
+return <div id='nav' className="flex top-0 fixed z-[1] bg-white w-full h-[6h] justify-around">
     <div className="flex items-center w-4/12">
         <img src="https://www.jobseeker.com/logo-black-text.svg" alt="logo" className="m-2 h-10"/>
     </div>
@@ -14,7 +22,8 @@ return <div className="flex top-0 fixed bg-white w-full h-[6h] justify-around">
         </ul>
     </div>
     <div className='w-3/12 flex items-center justify-center'>
-   <button className='bg-blue-800 text-lg font-semibold rounded-md text-white h-12 w-6/12'>Dashboard</button>
+   <button className='border-blue-800 text-lg font-semibold hover:text-white hover:bg-blue-800 rounded-md border  h-12 m-1 w-4/12'>Sign in</button>
+   <button className='bg-blue-800 text-lg font-semibold rounded-md text-white h-12 m-1 w-4/12'>Dashboard</button>
     </div>
 </div>
 }
