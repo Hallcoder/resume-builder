@@ -81,7 +81,10 @@ const SkillAndLanguageForm: React.FC<Props> = ({
       setValue(skill!.title);
       setSliderValue(skill!.step);
     }
-    if (language) setValue(language.name);
+    if (language) {
+      setSliderValue(language.step);
+      setValue(language.name)
+    };
   }, []);
   return (
     <div

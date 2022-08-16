@@ -17,6 +17,7 @@ export default class State{
     level?:string;
     skill?:skill;
     image?:any;
+    step?:number;
     employments?:emp[]=[];
     languages?:langs[] = [];
     skills?:skill[]=[];

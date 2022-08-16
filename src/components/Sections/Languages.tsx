@@ -12,10 +12,10 @@ const Languages: React.FC = () => {
   const dispatch = useDispatch();
   const dummyRef = useRef();
   const languages:{id:string,name:string,fluency:string}[]= useSelector(state => (state as any).languages!);
-  const handleAddNewLanguage = (ref:RefObject<HTMLInputElement>) => {
+  const handleAddNewLanguage = (ref:RefObject<HTMLInputElement>,slider) => {
        setStyles({display:'none'});
        (addRef.current!as HTMLDivElement).style.display = 'block';
-       handleChange('new-lang',ref,dispatch);
+       handleChange('new-lang',ref,dispatch,slider);
   }
   const handleEditLanguage = (ref:RefObject<HTMLInputElement>,lang:{id:string,name:string,fluency:string,step?:number},slider) => {
     setStyles({display:'none'});

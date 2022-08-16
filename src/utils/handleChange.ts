@@ -49,7 +49,8 @@ const handleChange: (
             skill: {
               id: Math.random().toString(),
               title: ref.current.value,
-              level: "Experienced",
+              level:payLoad.level,
+              step:payLoad.step
             },
           })
         );
@@ -82,7 +83,6 @@ const handleChange: (
           lang: {
             id: Math.random().toString(),
             name: ref.current.value,
-            fluency: "Native",
           },
         })
       );
