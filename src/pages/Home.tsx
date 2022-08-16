@@ -9,8 +9,8 @@ function Home() {
       <NavBar />
       <div className="w-full">
         <Intro />
-        <Templates />
         <Reviews />
+        <Templates />
       </div>
     </div>
   );
