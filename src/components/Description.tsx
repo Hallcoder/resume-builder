@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { SetStateAction, useRef, useState } from "react";
 import {
   MdFormatBold,
@@ -41,7 +42,7 @@ const Description: React.FC<props> = ({name,set}) => {
         <MdOutlineFormatListBulleted />
         <MdOutlineMenu />
       </div>
-      {set && <Done onDone={hideForm}/>}
+      {set && <Done  onDone={hideForm}/>}
     </div>
   );
 };
