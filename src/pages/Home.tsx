@@ -11,8 +11,8 @@ function Home() {
       <div className="w-full">
         <Intro />
         <Reviews />
-        <Templates />
         <Tools />
+        <Templates />
       </div>
     </div>
   );
