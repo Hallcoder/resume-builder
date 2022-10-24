@@ -1,7 +1,6 @@
 // @ts-nocheck
 import * as actions from "../redux/actionTypes";
 import State from "../utils/interfaces";
-
 const reducer: (
   state: State,
   action: { type: string; payLoad: State }
