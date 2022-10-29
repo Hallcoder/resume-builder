@@ -14,8 +14,8 @@ const Template1: React.FC = () => {
     html2canvas(ref.current).then(canvas => {
     //   articleRef.current.innerHTML = canvas.toDataURL();
         const image = canvas.toDataURL("img/png");
-        const doc = new jsPDF();
-        doc.addImage(image,"png",0,0,200,400);
+        const doc = new jsPDF("p","cm",[24,22]);
+        doc.addImage(image,"PNG",0,0,200,400);
         doc.save("resume.pdf");
     });
   };
@@ -154,8 +154,6 @@ const Template1: React.FC = () => {
               </aside>
             </section>
             <Overlap
-              generateImageResume={generateCanvasImage}
-              backToNormal={() => setCanvasImage("")}
             />
           </article>
         ) : (
@@ -167,13 +165,7 @@ const Template1: React.FC = () => {
             className="bg-blue-700 text-white m-1 p-3 w-5/12 text-sm"
             onClick={generateCanvasImage}
           >
-            Generate Resume
-          </button>
-          <button
-            className="bg-blue-700 text-white p-3 m-1 w-5/12 text-sm"
-            onClick={() => setCanvasImage("")}
-          >
-            Back to Editing
+            Download Resume as PDF
           </button>
       </span>
     </section>

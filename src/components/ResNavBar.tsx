@@ -25,14 +25,15 @@ const ResNavBar: React.FC = () => {
             <BiRedo title="Redo" className='border cursor-pointer border-gray-500 rounded-md m-1'/>
            </div>
         </div>
-        <div className='border flex items-center text-white rounded-md w-2/12 justify-center'>
-        <h2>EN</h2>
-        <MdKeyboardArrowDown title="Change Language"/>
+        <div className='flex items-center  rounded-md w-2/12 justify-center'>
+        <select className='w-full h-full'>
+          <option>English</option>
+          <option>French</option>
+          <option>Chinese</option>
+          <option>Spanish </option>
+        </select>
         </div>
-        <div onClick={handleDownload} title="Download your resume" className='text-white cursor-pointer flex rounded-md w-3/12 bg-blue-800 items-center justify-around'>
-            <TbArrowBarToDown className='text-2xl' />
-            <h2 className='text-xl'>Download</h2>
-        </div>
+        
       </div>
     </div>
   );
