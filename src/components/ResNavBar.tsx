@@ -6,6 +6,9 @@ import { useSelector } from 'react-redux';
 import State from "../utils/interfaces";
 const ResNavBar: React.FC = () => {
   const state = useSelector(state => state);
+  const handleDownload = () => {
+    
+  }
   return (
     <div className="flex fixed z-[1] w-full top-0 justify-between items-center h-[8vh] bg-black">
       <div className='flex m-2 items-center h-4/6 w-1/12 border rounded-md border-white'> 
@@ -26,7 +29,7 @@ const ResNavBar: React.FC = () => {
         <h2>EN</h2>
         <MdKeyboardArrowDown title="Change Language"/>
         </div>
-        <div title="Download your resume" className='text-white cursor-pointer flex rounded-md w-3/12 bg-blue-800 items-center justify-around'>
+        <div onClick={handleDownload} title="Download your resume" className='text-white cursor-pointer flex rounded-md w-3/12 bg-blue-800 items-center justify-around'>
             <TbArrowBarToDown className='text-2xl' />
             <h2 className='text-xl'>Download</h2>
         </div>
