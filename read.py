@@ -38,6 +38,6 @@ if __name__ == '__main__':
                 valid= False
             else:
                 ser.write('Not working....'.encode())
-                print("UID is invalid")
+                print("UID is invalid, Sorry!")
         
 
